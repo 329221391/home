@@ -1,0 +1,1316 @@
+2016-06-17 11:45:57 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined variable: acitve' in D:\jyq365\homebridge\modules\Stats\controllers\ZhuanpanActiveController.php:95
+Stack trace:
+#0 D:\jyq365\homebridge\modules\Stats\controllers\ZhuanpanActiveController.php(95): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'D:\\jyq365\\homeb...', 95, Array)
+#1 [internal function]: app\modules\Stats\controllers\ZhuanpanActiveController->actionEdit()
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#3 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#4 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('edit', Array)
+#5 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/zhuanpan-...', Array)
+#6 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#7 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#8 {main}
+2016-06-17 11:45:57 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'Stats/zhuanpan-active/edit'
+    'id' => '3'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'f1dorue13l5kildfctfeihs506'
+    'sfkey' => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '208'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'custominfo' => app\modules\AppBase\base\CustomInfo#1
+    (
+        [custom] => app\modules\AppBase\base\CustomMode#2
+        (
+            [id] => 4264
+            [sfkey] => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+            [school_id] => 486
+            [school_name] => null
+            [class_id] => 895
+            [class_name] => null
+            [cat_default_id] => 208
+            [cat_default_txt] => null
+            [catalogue_des_id] => 0
+            [catalogue_des_txt] => null
+            [name] => '   '
+            [name_zh] => '李老师'
+            [nickname] => null
+            [logo] => 'http://user.jyq365.com/headpic/h4264.jpg'
+            [password] => 'e10adc3949ba59abbe56e057f20f883e'
+            [token] => '0d54fd5260d991bd4ffd8d2d7db4fda55196cefe'
+            [tel] => null
+            [phone] => '18978945612'
+            [ip] => null
+            [ip_last] => null
+            [ispassed] => 211
+            [isdeleted] => 212
+            [isout] => 212
+            [createtime] => '2015-09-12 15:41:35'
+            [startetime] => null
+            [endtime] => null
+            [qq] => null
+            [email] => null
+            [weixin] => null
+            [space] => null
+            [blog] => null
+            [address] => null
+            [website] => null
+            [zh_province_id] => 16
+            [zh_citie_id] => 156
+            [zh_district_id] => 1411
+            [link_id] => null
+            [position_id] => 0
+            [description] => ''
+            [rftoken] => ''
+            [token_type] => 0
+            [isstar] => 212
+            [iscansend] => 211
+            [updatetime] => '2016-06-17 10:02:00'
+            [starttime] => null
+            [article_max_id] => '0'
+            [pingjia_max_id] => '0'
+            [reply_max_id] => '0'
+            [t_message_max_id] => '0'
+            [unpass_a_max_id] => '0'
+            [unpass_j_max_id] => '0'
+            [m_message_max_id] => 0
+            [message_max_id] => 0
+            [gf] => 0
+            [redflower] => 0
+            [game_points] => 98550
+            [points] => 98840
+            [coins] => 998
+            [postage] => 20
+        )
+    )
+    'admin_user' => [
+        'id' => '1'
+        'name' => '22a02dbb1cf26bfddb371f1010418e66'
+        'nickname' => 'adminggg'
+        'password' => 'a311a6068028d16b91096754e8176156'
+        'createtime' => '2015-02-11 15:22:18'
+        'updatetime' => '2015-02-11 15:22:22'
+        'ispassed' => '211'
+        'isdeleted' => '212'
+    ]
+    'manage_user' => [
+        'id' => '5706'
+        'school_id' => '650'
+        'class_id' => '0'
+        'cat_default_id' => '207'
+        'link_id' => null
+        'position_id' => '0'
+        'catalogue_des_id' => '0'
+        'name' => '   '
+        'name_zh' => '李梅'
+        'nickname' => ''
+        'logo' => 'headpic/h5706.png'
+        'password' => 'e10adc3949ba59abbe56e057f20f883e'
+        'description' => null
+        'rftoken' => null
+        'token_type' => '0'
+        'token' => '6b3cc72cdd5c6bab4ff9918671007ad98929b98f'
+        'tel' => null
+        'phone' => '13937694614'
+        'ip' => null
+        'ip_last' => null
+        'ispassed' => '211'
+        'isdeleted' => '212'
+        'isout' => '212'
+        'isstar' => '212'
+        'iscansend' => '211'
+        'createtime' => '2015-11-03 10:17:26'
+        'updatetime' => '2016-06-17 10:02:55'
+        'starttime' => null
+        'endtime' => null
+        'article_max_id' => '0'
+        'pingjia_max_id' => '0'
+        'reply_max_id' => '0'
+        't_message_max_id' => '0'
+        'unpass_a_max_id' => '0'
+        'unpass_j_max_id' => '0'
+        'm_message_max_id' => '0'
+        'message_max_id' => '0'
+        'gf' => '0'
+        'redflower' => '0'
+        'game_points' => '99570'
+        'points' => '338'
+        'coins' => '0'
+        'postage' => '43'
+    ]
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '1852'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=Stats/zhuanpan-active/edit&id=3'
+    'QUERY_STRING' => 'r=Stats/zhuanpan-active/edit&id=3'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '58251'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=f1dorue13l5kildfctfeihs506; sfkey=MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=208'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_REFERER' => 'http://homebridge/index.php?r=Stats/zhuanpan-active/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466135157.8414
+    'REQUEST_TIME' => 1466135157
+]
+2016-06-17 11:46:53 [127.0.0.1][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined variable: acitve' in D:\jyq365\homebridge\modules\Stats\views\zhuanpan-active\edit.php:60
+Stack trace:
+#0 D:\jyq365\homebridge\modules\Stats\views\zhuanpan-active\edit.php(60): yii\base\ErrorHandler->handleError(8, 'Undefined varia...', 'D:\\jyq365\\homeb...', 60, Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(325): require('D:\\jyq365\\homeb...')
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\jyq365\\homeb...', Array)
+#3 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\jyq365\\homeb...', Array, Object(app\modules\Stats\controllers\ZhuanpanActiveController))
+#4 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(371): yii\base\View->render('edit', Array, Object(app\modules\Stats\controllers\ZhuanpanActiveController))
+#5 D:\jyq365\homebridge\modules\Stats\controllers\ZhuanpanActiveController.php(95): yii\base\Controller->render('edit', Array)
+#6 [internal function]: app\modules\Stats\controllers\ZhuanpanActiveController->actionEdit()
+#7 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('edit', Array)
+#10 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/zhuanpan-...', Array)
+#11 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#13 {main}
+2016-06-17 11:46:53 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'Stats/zhuanpan-active/edit'
+    'id' => '3'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'f1dorue13l5kildfctfeihs506'
+    'sfkey' => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '208'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'custominfo' => app\modules\AppBase\base\CustomInfo#1
+    (
+        [custom] => app\modules\AppBase\base\CustomMode#2
+        (
+            [id] => 4264
+            [sfkey] => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+            [school_id] => 486
+            [school_name] => null
+            [class_id] => 895
+            [class_name] => null
+            [cat_default_id] => 208
+            [cat_default_txt] => null
+            [catalogue_des_id] => 0
+            [catalogue_des_txt] => null
+            [name] => '   '
+            [name_zh] => '李老师'
+            [nickname] => null
+            [logo] => 'http://user.jyq365.com/headpic/h4264.jpg'
+            [password] => 'e10adc3949ba59abbe56e057f20f883e'
+            [token] => '0d54fd5260d991bd4ffd8d2d7db4fda55196cefe'
+            [tel] => null
+            [phone] => '18978945612'
+            [ip] => null
+            [ip_last] => null
+            [ispassed] => 211
+            [isdeleted] => 212
+            [isout] => 212
+            [createtime] => '2015-09-12 15:41:35'
+            [startetime] => null
+            [endtime] => null
+            [qq] => null
+            [email] => null
+            [weixin] => null
+            [space] => null
+            [blog] => null
+            [address] => null
+            [website] => null
+            [zh_province_id] => 16
+            [zh_citie_id] => 156
+            [zh_district_id] => 1411
+            [link_id] => null
+            [position_id] => 0
+            [description] => ''
+            [rftoken] => ''
+            [token_type] => 0
+            [isstar] => 212
+            [iscansend] => 211
+            [updatetime] => '2016-06-17 10:02:00'
+            [starttime] => null
+            [article_max_id] => '0'
+            [pingjia_max_id] => '0'
+            [reply_max_id] => '0'
+            [t_message_max_id] => '0'
+            [unpass_a_max_id] => '0'
+            [unpass_j_max_id] => '0'
+            [m_message_max_id] => 0
+            [message_max_id] => 0
+            [gf] => 0
+            [redflower] => 0
+            [game_points] => 98550
+            [points] => 98840
+            [coins] => 998
+            [postage] => 20
+        )
+    )
+    'admin_user' => [
+        'id' => '1'
+        'name' => '22a02dbb1cf26bfddb371f1010418e66'
+        'nickname' => 'adminggg'
+        'password' => 'a311a6068028d16b91096754e8176156'
+        'createtime' => '2015-02-11 15:22:18'
+        'updatetime' => '2015-02-11 15:22:22'
+        'ispassed' => '211'
+        'isdeleted' => '212'
+    ]
+    'manage_user' => [
+        'id' => '5706'
+        'school_id' => '650'
+        'class_id' => '0'
+        'cat_default_id' => '207'
+        'link_id' => null
+        'position_id' => '0'
+        'catalogue_des_id' => '0'
+        'name' => '   '
+        'name_zh' => '李梅'
+        'nickname' => ''
+        'logo' => 'headpic/h5706.png'
+        'password' => 'e10adc3949ba59abbe56e057f20f883e'
+        'description' => null
+        'rftoken' => null
+        'token_type' => '0'
+        'token' => '6b3cc72cdd5c6bab4ff9918671007ad98929b98f'
+        'tel' => null
+        'phone' => '13937694614'
+        'ip' => null
+        'ip_last' => null
+        'ispassed' => '211'
+        'isdeleted' => '212'
+        'isout' => '212'
+        'isstar' => '212'
+        'iscansend' => '211'
+        'createtime' => '2015-11-03 10:17:26'
+        'updatetime' => '2016-06-17 10:02:55'
+        'starttime' => null
+        'endtime' => null
+        'article_max_id' => '0'
+        'pingjia_max_id' => '0'
+        'reply_max_id' => '0'
+        't_message_max_id' => '0'
+        'unpass_a_max_id' => '0'
+        'unpass_j_max_id' => '0'
+        'm_message_max_id' => '0'
+        'message_max_id' => '0'
+        'gf' => '0'
+        'redflower' => '0'
+        'game_points' => '99570'
+        'points' => '338'
+        'coins' => '0'
+        'postage' => '43'
+    ]
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '1820'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=Stats/zhuanpan-active/edit&id=3'
+    'QUERY_STRING' => 'r=Stats/zhuanpan-active/edit&id=3'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '58276'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=f1dorue13l5kildfctfeihs506; sfkey=MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=208'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_REFERER' => 'http://homebridge/index.php?r=Stats/zhuanpan-active/index'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466135213.1865
+    'REQUEST_TIME' => 1466135213
+]
+2016-06-17 11:59:34 [127.0.0.1][-][f1dorue13l5kildfctfeihs506][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Array to string conversion' in D:\jyq365\homebridge\views\zhuan-pan\enter.php:60
+Stack trace:
+#0 D:\jyq365\homebridge\views\zhuan-pan\enter.php(60): yii\base\ErrorHandler->handleError(8, 'Array to string...', 'D:\\jyq365\\homeb...', 60, Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(325): require('D:\\jyq365\\homeb...')
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\jyq365\\homeb...', Array)
+#3 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\jyq365\\homeb...', Array, Object(app\controllers\ZhuanPanController))
+#4 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(371): yii\base\View->render('enter', Array, Object(app\controllers\ZhuanPanController))
+#5 D:\jyq365\homebridge\controllers\ZhuanPanController.php(62): yii\base\Controller->render('enter', Array)
+#6 [internal function]: app\controllers\ZhuanPanController->actionEnter()
+#7 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('enter', Array)
+#10 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('zhuan-pan/enter', Array)
+#11 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#13 {main}
+2016-06-17 11:59:34 [127.0.0.1][-][f1dorue13l5kildfctfeihs506][info][application] $_GET = [
+    'r' => 'zhuan-pan/enter'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'f1dorue13l5kildfctfeihs506'
+    'sfkey' => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '208'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'custominfo' => app\modules\AppBase\base\CustomInfo#1
+    (
+        [custom] => app\modules\AppBase\base\CustomMode#2
+        (
+            [id] => 4264
+            [sfkey] => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+            [school_id] => 486
+            [school_name] => null
+            [class_id] => 895
+            [class_name] => null
+            [cat_default_id] => 208
+            [cat_default_txt] => null
+            [catalogue_des_id] => 0
+            [catalogue_des_txt] => null
+            [name] => '   '
+            [name_zh] => '李老师'
+            [nickname] => null
+            [logo] => 'http://user.jyq365.com/headpic/h4264.jpg'
+            [password] => 'e10adc3949ba59abbe56e057f20f883e'
+            [token] => '0d54fd5260d991bd4ffd8d2d7db4fda55196cefe'
+            [tel] => null
+            [phone] => '18978945612'
+            [ip] => null
+            [ip_last] => null
+            [ispassed] => 211
+            [isdeleted] => 212
+            [isout] => 212
+            [createtime] => '2015-09-12 15:41:35'
+            [startetime] => null
+            [endtime] => null
+            [qq] => null
+            [email] => null
+            [weixin] => null
+            [space] => null
+            [blog] => null
+            [address] => null
+            [website] => null
+            [zh_province_id] => 16
+            [zh_citie_id] => 156
+            [zh_district_id] => 1411
+            [link_id] => null
+            [position_id] => 0
+            [description] => ''
+            [rftoken] => ''
+            [token_type] => 0
+            [isstar] => 212
+            [iscansend] => 211
+            [updatetime] => '2016-06-17 10:02:00'
+            [starttime] => null
+            [article_max_id] => '0'
+            [pingjia_max_id] => '0'
+            [reply_max_id] => '0'
+            [t_message_max_id] => '0'
+            [unpass_a_max_id] => '0'
+            [unpass_j_max_id] => '0'
+            [m_message_max_id] => 0
+            [message_max_id] => 0
+            [gf] => 0
+            [redflower] => 0
+            [game_points] => 98550
+            [points] => 98840
+            [coins] => 998
+            [postage] => 20
+        )
+    )
+    'admin_user' => [
+        'id' => '1'
+        'name' => '22a02dbb1cf26bfddb371f1010418e66'
+        'nickname' => 'adminggg'
+        'password' => 'a311a6068028d16b91096754e8176156'
+        'createtime' => '2015-02-11 15:22:18'
+        'updatetime' => '2015-02-11 15:22:22'
+        'ispassed' => '211'
+        'isdeleted' => '212'
+    ]
+    'manage_user' => [
+        'id' => '5706'
+        'school_id' => '650'
+        'class_id' => '0'
+        'cat_default_id' => '207'
+        'link_id' => null
+        'position_id' => '0'
+        'catalogue_des_id' => '0'
+        'name' => '   '
+        'name_zh' => '李梅'
+        'nickname' => ''
+        'logo' => 'headpic/h5706.png'
+        'password' => 'e10adc3949ba59abbe56e057f20f883e'
+        'description' => null
+        'rftoken' => null
+        'token_type' => '0'
+        'token' => '6b3cc72cdd5c6bab4ff9918671007ad98929b98f'
+        'tel' => null
+        'phone' => '13937694614'
+        'ip' => null
+        'ip_last' => null
+        'ispassed' => '211'
+        'isdeleted' => '212'
+        'isout' => '212'
+        'isstar' => '212'
+        'iscansend' => '211'
+        'createtime' => '2015-11-03 10:17:26'
+        'updatetime' => '2016-06-17 10:02:55'
+        'starttime' => null
+        'endtime' => null
+        'article_max_id' => '0'
+        'pingjia_max_id' => '0'
+        'reply_max_id' => '0'
+        't_message_max_id' => '0'
+        'unpass_a_max_id' => '0'
+        'unpass_j_max_id' => '0'
+        'm_message_max_id' => '0'
+        'message_max_id' => '0'
+        'gf' => '0'
+        'redflower' => '0'
+        'game_points' => '99570'
+        'points' => '338'
+        'coins' => '0'
+        'postage' => '43'
+    ]
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '1880'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=zhuan-pan/enter'
+    'QUERY_STRING' => 'r=zhuan-pan/enter'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '58835'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=f1dorue13l5kildfctfeihs506; sfkey=MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=208'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466135974.121
+    'REQUEST_TIME' => 1466135974
+]
+2016-06-17 12:03:11 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in D:\jyq365\homebridge\controllers\ZhuanPanController.php:28
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-06-17 12:03:11 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'zhuan-pan/enter'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'f1dorue13l5kildfctfeihs506'
+    'sfkey' => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '208'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '1880'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=zhuan-pan/enter'
+    'QUERY_STRING' => 'r=zhuan-pan/enter'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '58924'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=f1dorue13l5kildfctfeihs506; sfkey=MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=208'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466136191.2608
+    'REQUEST_TIME' => 1466136191
+]
+2016-06-17 12:03:57 [127.0.0.1][-][f1dorue13l5kildfctfeihs506][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cat_default_id' in 'where clause'' in D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#3 D:\jyq365\homebridge\controllers\ZhuanPanController.php(28): yii\db\Query->one()
+#4 [internal function]: app\controllers\ZhuanPanController->actionEnter()
+#5 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#6 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#7 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#8 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#9 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#11 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cat_default_id' in 'where clause'
+The SQL being executed was: SELECT `scroll_info` FROM `zhuanpan_active` WHERE `cat_default_id`=208' in D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT `scroll_...')
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#3 D:\jyq365\homebridge\controllers\ZhuanPanController.php(28): yii\db\Query->one()
+#4 [internal function]: app\controllers\ZhuanPanController->actionEnter()
+#5 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#6 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#7 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#8 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#9 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#11 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'cat_default_id' in 'where clause'
+)
+
+2016-06-17 12:03:57 [127.0.0.1][-][f1dorue13l5kildfctfeihs506][info][application] $_GET = [
+    'r' => 'zhuan-pan/enter'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'f1dorue13l5kildfctfeihs506'
+    'sfkey' => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '208'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'custominfo' => app\modules\AppBase\base\CustomInfo#1
+    (
+        [custom] => app\modules\AppBase\base\CustomMode#2
+        (
+            [id] => 4264
+            [sfkey] => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+            [school_id] => 486
+            [school_name] => null
+            [class_id] => 895
+            [class_name] => null
+            [cat_default_id] => 208
+            [cat_default_txt] => null
+            [catalogue_des_id] => 0
+            [catalogue_des_txt] => null
+            [name] => '   '
+            [name_zh] => '李老师'
+            [nickname] => null
+            [logo] => 'http://user.jyq365.com/headpic/h4264.jpg'
+            [password] => 'e10adc3949ba59abbe56e057f20f883e'
+            [token] => '0d54fd5260d991bd4ffd8d2d7db4fda55196cefe'
+            [tel] => null
+            [phone] => '18978945612'
+            [ip] => null
+            [ip_last] => null
+            [ispassed] => 211
+            [isdeleted] => 212
+            [isout] => 212
+            [createtime] => '2015-09-12 15:41:35'
+            [startetime] => null
+            [endtime] => null
+            [qq] => null
+            [email] => null
+            [weixin] => null
+            [space] => null
+            [blog] => null
+            [address] => null
+            [website] => null
+            [zh_province_id] => 16
+            [zh_citie_id] => 156
+            [zh_district_id] => 1411
+            [link_id] => null
+            [position_id] => 0
+            [description] => ''
+            [rftoken] => ''
+            [token_type] => 0
+            [isstar] => 212
+            [iscansend] => 211
+            [updatetime] => '2016-06-17 10:02:00'
+            [starttime] => null
+            [article_max_id] => '0'
+            [pingjia_max_id] => '0'
+            [reply_max_id] => '0'
+            [t_message_max_id] => '0'
+            [unpass_a_max_id] => '0'
+            [unpass_j_max_id] => '0'
+            [m_message_max_id] => 0
+            [message_max_id] => 0
+            [gf] => 0
+            [redflower] => 0
+            [game_points] => 98550
+            [points] => 98840
+            [coins] => 998
+            [postage] => 20
+        )
+    )
+    'admin_user' => [
+        'id' => '1'
+        'name' => '22a02dbb1cf26bfddb371f1010418e66'
+        'nickname' => 'adminggg'
+        'password' => 'a311a6068028d16b91096754e8176156'
+        'createtime' => '2015-02-11 15:22:18'
+        'updatetime' => '2015-02-11 15:22:22'
+        'ispassed' => '211'
+        'isdeleted' => '212'
+    ]
+    'manage_user' => [
+        'id' => '5706'
+        'school_id' => '650'
+        'class_id' => '0'
+        'cat_default_id' => '207'
+        'link_id' => null
+        'position_id' => '0'
+        'catalogue_des_id' => '0'
+        'name' => '   '
+        'name_zh' => '李梅'
+        'nickname' => ''
+        'logo' => 'headpic/h5706.png'
+        'password' => 'e10adc3949ba59abbe56e057f20f883e'
+        'description' => null
+        'rftoken' => null
+        'token_type' => '0'
+        'token' => '6b3cc72cdd5c6bab4ff9918671007ad98929b98f'
+        'tel' => null
+        'phone' => '13937694614'
+        'ip' => null
+        'ip_last' => null
+        'ispassed' => '211'
+        'isdeleted' => '212'
+        'isout' => '212'
+        'isstar' => '212'
+        'iscansend' => '211'
+        'createtime' => '2015-11-03 10:17:26'
+        'updatetime' => '2016-06-17 10:02:55'
+        'starttime' => null
+        'endtime' => null
+        'article_max_id' => '0'
+        'pingjia_max_id' => '0'
+        'reply_max_id' => '0'
+        't_message_max_id' => '0'
+        'unpass_a_max_id' => '0'
+        'unpass_j_max_id' => '0'
+        'm_message_max_id' => '0'
+        'message_max_id' => '0'
+        'gf' => '0'
+        'redflower' => '0'
+        'game_points' => '99570'
+        'points' => '338'
+        'coins' => '0'
+        'postage' => '43'
+    ]
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '1880'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=zhuan-pan/enter'
+    'QUERY_STRING' => 'r=zhuan-pan/enter'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '58947'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=f1dorue13l5kildfctfeihs506; sfkey=MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=208'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466136237.6938
+    'REQUEST_TIME' => 1466136237
+]
+2016-06-17 12:05:13 [127.0.0.1][-][f1dorue13l5kildfctfeihs506][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cat_default_id' in 'where clause'' in D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php:837
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(837): PDOStatement->execute()
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#3 D:\jyq365\homebridge\controllers\ZhuanPanController.php(28): yii\db\Query->one()
+#4 [internal function]: app\controllers\ZhuanPanController->actionEnter()
+#5 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#6 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#7 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#8 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#9 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#11 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'cat_default_id' in 'where clause'
+The SQL being executed was: SELECT * FROM `zhuanpan_active` WHERE `cat_default_id`=208' in D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Schema.php:628
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'SELECT * FROM `...')
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Command.php(373): yii\db\Command->queryInternal('<span class="st...', '<span class="ke...')
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\db\Query.php(243): yii\db\Command->queryOne()
+#3 D:\jyq365\homebridge\controllers\ZhuanPanController.php(28): yii\db\Query->one()
+#4 [internal function]: app\controllers\ZhuanPanController->actionEnter()
+#5 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array('[<span class="t...', '[]')
+#6 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams('[<span class="s...')
+#7 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('<span class="st...', '[<span class="s...')
+#8 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('<span class="st...', '[<span class="s...')
+#9 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#10 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#11 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'cat_default_id' in 'where clause'
+)
+
+2016-06-17 12:05:13 [127.0.0.1][-][f1dorue13l5kildfctfeihs506][info][application] $_GET = [
+    'r' => 'zhuan-pan/enter'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => 'f1dorue13l5kildfctfeihs506'
+    'sfkey' => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '208'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'custominfo' => app\modules\AppBase\base\CustomInfo#1
+    (
+        [custom] => app\modules\AppBase\base\CustomMode#2
+        (
+            [id] => 4264
+            [sfkey] => 'MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+            [school_id] => 486
+            [school_name] => null
+            [class_id] => 895
+            [class_name] => null
+            [cat_default_id] => 208
+            [cat_default_txt] => null
+            [catalogue_des_id] => 0
+            [catalogue_des_txt] => null
+            [name] => '   '
+            [name_zh] => '李老师'
+            [nickname] => null
+            [logo] => 'http://user.jyq365.com/headpic/h4264.jpg'
+            [password] => 'e10adc3949ba59abbe56e057f20f883e'
+            [token] => '0d54fd5260d991bd4ffd8d2d7db4fda55196cefe'
+            [tel] => null
+            [phone] => '18978945612'
+            [ip] => null
+            [ip_last] => null
+            [ispassed] => 211
+            [isdeleted] => 212
+            [isout] => 212
+            [createtime] => '2015-09-12 15:41:35'
+            [startetime] => null
+            [endtime] => null
+            [qq] => null
+            [email] => null
+            [weixin] => null
+            [space] => null
+            [blog] => null
+            [address] => null
+            [website] => null
+            [zh_province_id] => 16
+            [zh_citie_id] => 156
+            [zh_district_id] => 1411
+            [link_id] => null
+            [position_id] => 0
+            [description] => ''
+            [rftoken] => ''
+            [token_type] => 0
+            [isstar] => 212
+            [iscansend] => 211
+            [updatetime] => '2016-06-17 10:02:00'
+            [starttime] => null
+            [article_max_id] => '0'
+            [pingjia_max_id] => '0'
+            [reply_max_id] => '0'
+            [t_message_max_id] => '0'
+            [unpass_a_max_id] => '0'
+            [unpass_j_max_id] => '0'
+            [m_message_max_id] => 0
+            [message_max_id] => 0
+            [gf] => 0
+            [redflower] => 0
+            [game_points] => 98550
+            [points] => 98840
+            [coins] => 998
+            [postage] => 20
+        )
+    )
+    'admin_user' => [
+        'id' => '1'
+        'name' => '22a02dbb1cf26bfddb371f1010418e66'
+        'nickname' => 'adminggg'
+        'password' => 'a311a6068028d16b91096754e8176156'
+        'createtime' => '2015-02-11 15:22:18'
+        'updatetime' => '2015-02-11 15:22:22'
+        'ispassed' => '211'
+        'isdeleted' => '212'
+    ]
+    'manage_user' => [
+        'id' => '5706'
+        'school_id' => '650'
+        'class_id' => '0'
+        'cat_default_id' => '207'
+        'link_id' => null
+        'position_id' => '0'
+        'catalogue_des_id' => '0'
+        'name' => '   '
+        'name_zh' => '李梅'
+        'nickname' => ''
+        'logo' => 'headpic/h5706.png'
+        'password' => 'e10adc3949ba59abbe56e057f20f883e'
+        'description' => null
+        'rftoken' => null
+        'token_type' => '0'
+        'token' => '6b3cc72cdd5c6bab4ff9918671007ad98929b98f'
+        'tel' => null
+        'phone' => '13937694614'
+        'ip' => null
+        'ip_last' => null
+        'ispassed' => '211'
+        'isdeleted' => '212'
+        'isout' => '212'
+        'isstar' => '212'
+        'iscansend' => '211'
+        'createtime' => '2015-11-03 10:17:26'
+        'updatetime' => '2016-06-17 10:02:55'
+        'starttime' => null
+        'endtime' => null
+        'article_max_id' => '0'
+        'pingjia_max_id' => '0'
+        'reply_max_id' => '0'
+        't_message_max_id' => '0'
+        'unpass_a_max_id' => '0'
+        'unpass_j_max_id' => '0'
+        'm_message_max_id' => '0'
+        'message_max_id' => '0'
+        'gf' => '0'
+        'redflower' => '0'
+        'game_points' => '99570'
+        'points' => '338'
+        'coins' => '0'
+        'postage' => '43'
+    ]
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '1852'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=zhuan-pan/enter'
+    'QUERY_STRING' => 'r=zhuan-pan/enter'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '58974'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=f1dorue13l5kildfctfeihs506; sfkey=MjTcgp5hNpzg5NDU2MTIsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=208'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466136313.1776
+    'REQUEST_TIME' => 1466136313
+]
+2016-06-17 14:04:29 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in D:\jyq365\homebridge\controllers\ZhuanPanController.php:53
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-06-17 14:04:29 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'zhuan-pan/enter'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '0dqft3e6jgorrl5r5a85kefm35'
+    'sfkey' => 'MjTcgpzhMpzY0MTgzODMsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '209'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '456'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=zhuan-pan/enter'
+    'QUERY_STRING' => 'r=zhuan-pan/enter'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '50493'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=0dqft3e6jgorrl5r5a85kefm35; sfkey=MjTcgpzhMpzY0MTgzODMsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=209'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466143469.4831
+    'REQUEST_TIME' => 1466143469
+]
+2016-06-17 14:05:34 [127.0.0.1][-][-][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '=>' (T_DOUBLE_ARROW)' in D:\jyq365\homebridge\controllers\ZhuanPanController.php:73
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2016-06-17 14:05:34 [127.0.0.1][-][-][info][application] $_GET = [
+    'r' => 'zhuan-pan/enter'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '0dqft3e6jgorrl5r5a85kefm35'
+    'sfkey' => 'MjTcgpzhMpzY0MTgzODMsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '209'
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '456'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=zhuan-pan/enter'
+    'QUERY_STRING' => 'r=zhuan-pan/enter'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '50527'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=0dqft3e6jgorrl5r5a85kefm35; sfkey=MjTcgpzhMpzY0MTgzODMsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=209'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466143534.9565
+    'REQUEST_TIME' => 1466143534
+]
+2016-06-17 14:06:55 [127.0.0.1][-][0dqft3e6jgorrl5r5a85kefm35][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Array to string conversion' in D:\jyq365\homebridge\views\zhuan-pan\enter.php:80
+Stack trace:
+#0 D:\jyq365\homebridge\views\zhuan-pan\enter.php(80): yii\base\ErrorHandler->handleError(8, 'Array to string...', 'D:\\jyq365\\homeb...', 80, Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(325): require('D:\\jyq365\\homeb...')
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(247): yii\base\View->renderPhpFile('D:\\jyq365\\homeb...', Array)
+#3 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\View.php(149): yii\base\View->renderFile('D:\\jyq365\\homeb...', Array, Object(app\controllers\ZhuanPanController))
+#4 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(371): yii\base\View->render('enter', Array, Object(app\controllers\ZhuanPanController))
+#5 D:\jyq365\homebridge\controllers\ZhuanPanController.php(73): yii\base\Controller->render('enter', Array)
+#6 [internal function]: app\controllers\ZhuanPanController->actionEnter()
+#7 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\InlineAction.php(55): call_user_func_array(Array, Array)
+#8 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php(151): yii\base\InlineAction->runWithParams(Array)
+#9 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('enter', Array)
+#10 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('zhuan-pan/enter', Array)
+#11 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#12 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#13 {main}
+2016-06-17 14:06:55 [127.0.0.1][-][0dqft3e6jgorrl5r5a85kefm35][info][application] $_GET = [
+    'r' => 'zhuan-pan/enter'
+]
+
+$_COOKIE = [
+    'PHPSESSID' => '0dqft3e6jgorrl5r5a85kefm35'
+    'sfkey' => 'MjTcgpzhMpzY0MTgzODMsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+    'role' => '209'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'custominfo' => app\modules\AppBase\base\CustomInfo#1
+    (
+        [custom] => app\modules\AppBase\base\CustomMode#2
+        (
+            [id] => 567
+            [sfkey] => 'MjTcgpzhMpzY0MTgzODMsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O'
+            [school_id] => 18
+            [school_name] => null
+            [class_id] => 234
+            [class_name] => null
+            [cat_default_id] => 209
+            [cat_default_txt] => null
+            [catalogue_des_id] => 0
+            [catalogue_des_txt] => null
+            [name] => '   '
+            [name_zh] => '李静菲'
+            [nickname] => null
+            [logo] => 'http://user.jyq365.com/headpic/h567.png'
+            [password] => 'e10adc3949ba59abbe56e057f20f883e'
+            [token] => 'ba34f03060a79dc46bf84879d91fce72b16208e070205c244106c8b61e0b8bb5'
+            [tel] => null
+            [phone] => '18336418383'
+            [ip] => null
+            [ip_last] => null
+            [ispassed] => 211
+            [isdeleted] => 212
+            [isout] => 212
+            [createtime] => '2015-06-23 16:17:32'
+            [startetime] => null
+            [endtime] => '2015-06-23 16:17:32'
+            [qq] => null
+            [email] => null
+            [weixin] => null
+            [space] => null
+            [blog] => null
+            [address] => null
+            [website] => null
+            [zh_province_id] => 16
+            [zh_citie_id] => 156
+            [zh_district_id] => 1410
+            [link_id] => null
+            [position_id] => 0
+            [description] => null
+            [rftoken] => '00:00:00:00:00:00'
+            [token_type] => 1
+            [isstar] => 212
+            [iscansend] => 212
+            [updatetime] => '2016-06-17 09:14:53'
+            [starttime] => '2015-06-23 16:17:32'
+            [article_max_id] => '0'
+            [pingjia_max_id] => '0'
+            [reply_max_id] => '0'
+            [t_message_max_id] => '0'
+            [unpass_a_max_id] => '0'
+            [unpass_j_max_id] => '0'
+            [m_message_max_id] => 0
+            [message_max_id] => 0
+            [gf] => 14
+            [redflower] => 1663
+            [game_points] => 9880
+            [points] => 8530
+            [coins] => 0
+            [postage] => 17
+        )
+    )
+]
+
+$_SERVER = [
+    'PATH' => 'C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\Git\\cmd;D:\\phpStudy\\php55n;C:\\ProgramData\\ComposerSetup\\bin;C:\\Users\\Administrator\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SYSTEMROOT' => 'C:\\windows'
+    'COMSPEC' => 'C:\\windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\windows'
+    'PHP_FCGI_MAX_REQUESTS' => '1000'
+    'PHPRC' => 'D:/phpStudy/php55n'
+    '_FCGI_SHUTDOWN_EVENT_' => '456'
+    'SCRIPT_NAME' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=zhuan-pan/enter'
+    'QUERY_STRING' => 'r=zhuan-pan/enter'
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REMOTE_PORT' => '50573'
+    'SCRIPT_FILENAME' => 'D:/jyq365/homebridge/web/index.php'
+    'SERVER_ADMIN' => 'admin@phpStudy.net'
+    'CONTEXT_DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'CONTEXT_PREFIX' => ''
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => 'D:/jyq365/homebridge/web'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'SERVER_NAME' => 'homebridge'
+    'SERVER_SOFTWARE' => 'Apache/2.4.18 (Win32) OpenSSL/1.0.2e mod_fcgid/2.3.9'
+    'SERVER_SIGNATURE' => ''
+    'SystemRoot' => 'C:\\windows'
+    'HTTP_COOKIE' => 'PHPSESSID=0dqft3e6jgorrl5r5a85kefm35; sfkey=MjTcgpzhMpzY0MTgzODMsZTEwYWRjMzk0OWJhNTlhYmJlNTZlMDU3ZjIwZjg4M2UO0O0O; role=209'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.8'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, sdch'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'close'
+    'HTTP_HOST' => 'homebridge'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1466143615.0145
+    'REQUEST_TIME' => 1466143615
+]

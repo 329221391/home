@@ -1,0 +1,37 @@
+*{font-size:17px;color:#3c3c3c;font-family:"Microsoft YaHei",微软雅黑 !important;}
+body{background:#eeeeee}
+img{max-width:100%;!important}
+input{outline:none !important;}
+input:focus {
+    outline: none;
+    border-color: #cfdc00;
+    box-shadow: 0 0 5px rgba(207, 220, 0, 0.4);
+    border-radius: 5px;
+}
+#owePostage{text-align: left;  width: 100px; position: absolute; left: 70px; top: 10px; color:#fff; margin-right: 5px;}
+#submit{text-align: left;  width: 95px; float: right; color:#337ab7; margin-right: 5px;}
+#exPostage{text-align: left;  width: 80px; float: center; color:#337ab7; margin-left: 5px;}
+.postLabel{text-align: left; color:#fff; width: 35px;}
+#postOrder{text-align: left; position: absolute; right: 20px; bottom: 8px; color:#337ab7; margin-right: 5px;}
+.daofu{position: absolute;right: 13px; text-align: left; top:5px; color:#fff}
+.daofu input{position: absolute;right: 90px; top:5px;width: 18px;height: 18px; }
+#postage{text-align: left;color:#fff;}
+#ExPostage{width: 60px; text-align: center; position: absolute; left: 65px; top: 0px; color:#fff;}
+input.form-control{border-radius: 0px !important;}
+label.control-label{color:#5e5e5e}
+.header-list{ text-align: center; height:80px;background: #337ab7;padding-top: 10px;position:fixed;width:100%;}
+.header{ text-align: center; height:50px;background: #337ab7;padding-top: 10px;position:fixed;width:100%;}
+.footer{height:80px;background: #337ab7;padding-top: 10px; position:fixed; left: 0;bottom: 0px; width:100%;}
+.footer .postage{text-align: left;color:#fff; padding-left: 5px;}
+.header span,div{color:#fff;font-size:20px}
+.header-list span,div{color:#fff;font-size:20px}
+
+.header-list .ready-shipping{margin-left: 15px; float: left;padding: 2px; margin-top: 30px}
+.header-list .delivered{margin-right: 15px; float: right; padding: 2px; margin-top: 30px}
+
+.header .btn-right{position:absolute;right:10px;top:7px;}
+.header .btn-left{position:absolute;left:10px;top:7px;}
+.padding{padding:10px;}
+.light_bg{background:#ffffff}
+.content{}
+.content img{display:block;}

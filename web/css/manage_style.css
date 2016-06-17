@@ -1,0 +1,115 @@
+* {
+    font-size: 14px;
+}
+.group_item {
+    display: inline-block;
+    height: 26px;
+    line-height: 1.5;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    padding-right: 6px;
+    border-radius: 2px;
+    background: #eee;
+    vertical-align: middle
+}
+.group_item_avatar img, .group_item_close, .group_item_name {
+    vertical-align: middle
+}
+.group_item_avatar {
+    float: left
+}
+.group_item_avatar img {
+    width: 24px;
+    height: 24px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px
+}
+.group_item_name {
+    line-height: 26px;
+    padding-left: 6px;
+    float: left;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+.group_item_close:after {
+    content: "\e014";
+    font-family: 'Glyphicons Halflings';
+    font-size: 11px;
+    line-height: 25px;
+    color: #aaa;
+    margin-left: 5px;
+    cursor: pointer
+}
+.input_group_add {
+    vertical-align: middle;
+    padding: 2px;
+    height: 20px;
+    border: none;
+    line-height: 20px;
+    color: #777;
+    outline: 0;
+    cursor: pointer
+}
+.input_group_add:focus {
+    outline: 0
+}
+.tag_value {
+    margin-left: 15px;
+    line-height: 2em;
+    padding: 0.5em;
+    background-color: #1caf9a;
+    border-radius: 0.5em;
+    text-align: center;
+    color: #FFFFFF;
+}
+.tag-title{
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+.form_padding {
+    padding-top: 1em;
+}
+.edit_tag {
+    margin-left: 15px;
+    line-height: 2em;
+    padding: 0.5em;
+    background-color: #189b88;
+    border-radius: 0.5em;
+    text-align: center;
+    color: #FFFFFF;
+}
+.bread_li a {
+    color: #777;
+}
+.bread_li a:hover {
+    color: #337ab7;
+}
+.footer {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: #CCCCCC;
+    font-size: 0.5em;
+    line-height: 2em;
+}
+.pos-rela {
+    position: relative;
+    overflow: hidden;
+}
+.alpha_slide {
+    opacity: 0.5;
+    background-color: #000000;
+    height: 2em;
+}
+.slide_posi {
+    line-height: 2em;
+    position: absolute;
+    bottom: -2em;
+    left: 0px;
+    width: 100%;
+    border-radius: 0 0 2px 2px;
+}
+.slide_posi a {
+    color: #FFFFFF;
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cat-default>
+    <re id="206" parent_id="0" name="role" name_zh="角色"/>
+    <re id="207" parent_id="206" name="headmaster" name_zh="园长"/>
+    <re id="208" parent_id="206" name="teacher" name_zh="老师"/>
+    <re id="209" parent_id="206" name="parent" name_zh="家长"/>
+    <re id="210" parent_id="0" name="role" name_zh="角色"/>
+    <re id="211" parent_id="210" name="yes" name_zh="是"/>
+    <re id="212" parent_id="210" name="no" name_zh="否"/>
+</cat-default>

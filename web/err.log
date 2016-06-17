@@ -1,0 +1,113 @@
+error: /index.php?r=Stats%2Findex.php%3Fr%3DStats%2Fzhuanpan-active%2Fgoods-list&goods_active_id=1|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Stats/index.php?r=Stats/zhuanpan-active/goods-list".' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/index.php...', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=Stats%2Findex.php%3Fr%3DStats%2Fzhuanpan-active%2Fgoods-list&goods_active_id=1|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Stats/index.php?r=Stats/zhuanpan-active/goods-list".' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/index.php...', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=Stats%2Findex.php%3Fr%3DStats%2Fzhuanpan-active%2Fgoods-list&goods_active_id=1|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "Stats/index.php?r=Stats/zhuanpan-active/goods-list".' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/index.php...', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=Stats/zhuanpan-goods/create1|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: Stats/zhuanpan-goods/create1' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php:122
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('create1', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/zhuanpan-...', Array)
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=Stats/zhuanpan-goods/create1|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: Stats/zhuanpan-goods/create1' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php:122
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('create1', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/zhuanpan-...', Array)
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=zhuan_pan/enter|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request "zhuan_pan/enter".' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php:461
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('zhuan_pan/enter', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#3 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=Stats/zhuanpan-active/goods_list|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: Stats/zhuanpan-active/goods_list' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php:122
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('goods_list', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/zhuanpan-...', Array)
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=Stats/zhuanpan-active/goods_list|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: Stats/zhuanpan-active/goods_list' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php:122
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('goods_list', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/zhuanpan-...', Array)
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 
+error: /index.php?r=Stats/shipping/list|exception 'yii\base\InvalidRouteException' with message 'Unable to resolve the request: Stats/shipping/list' in D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Controller.php:122
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Module.php(455): yii\base\Controller->runAction('list', Array)
+#1 D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php(84): yii\base\Module->runAction('Stats/shipping/...', Array)
+#2 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#4 {main}
+
+Next exception 'yii\web\NotFoundHttpException' with message 'Page not found.' in D:\jyq365\homebridge\vendor\yiisoft\yii2\web\Application.php:96
+Stack trace:
+#0 D:\jyq365\homebridge\vendor\yiisoft\yii2\base\Application.php(375): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 D:\jyq365\homebridge\web\index.php(9): yii\base\Application->run()
+#2 {main} 

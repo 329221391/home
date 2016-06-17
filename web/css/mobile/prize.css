@@ -1,0 +1,6 @@
+.prize_item {min-height:115px;background: #fff;margin-bottom:10px;}
+.prize_item div{font-size:14px;}
+.prize_item a{font-size:14px;}
+.prize_item img{width:75px;height:75px;}
+.prize_item .prize_panel{position:absolute;margin:10px;}
+.prize_item .prize_panel .info{position:absolute;top:-5px;left:85px;width:200px;}

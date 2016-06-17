@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>申请合作手机端</title>
+    <script type="text/javascript" src="js/city.js"></script>
+    <script language="JavaScript">
+        function correctPNG() // correctly handle PNG transparency in Win IE 5.5 & 6.
+        {
+            var arVersion = navigator.appVersion.split("MSIE")
+            var version = parseFloat(arVersion[1])
+            if ((version >= 5.5) && (document.body.filters)) {
+                for (var j = 0; j < document.images.length; j++) {
+                    var img = document.images[j]
+                    var imgName = img.src.toUpperCase()
+                    if (imgName.substring(imgName.length - 3, imgName.length) == "PNG") {
+                        var imgID = (img.id) ? "id='" + img.id + "' " : ""
+                        var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+                        var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+                        var imgStyle = "display:inline-block;" + img.style.cssText
+                        if (img.align == "left") imgStyle = "float:left;" + imgStyle
+                        if (img.align == "right") imgStyle = "float:right;" + imgStyle
+                        if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+                        var strNewHTML = "<span " + imgID + imgClass + imgTitle
+                                + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+                                + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+                                + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>"
+                        img.outerHTML = strNewHTML
+                        j = j - 1
+                    }
+                }
+            }
+        }
+        window.attachEvent("onload", correctPNG);
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        a, img {
+            border: 0;
+        }
+        body {
+            font: 12px "微软雅黑", Arial, Helvetica, sans-serif;
+        }
+        .li {
+            list-style-type: none;
+        }
+        .clear {
+            clear: both;
+        }
+        .m_nav {
+            line-height: 90px;
+            height: 90px;
+            text-align: center;
+            background: #28cacc;
+            width: 100%;
+        }
+        .m_foot {
+            background: #4b6364;
+            height: 70px;
+            text-align: center;
+            line-height: 70px;
+            width: 100%;
+            color: #FFF;
+        }
+        .z_content_title {
+            width: 100%;
+            line-height: 40px;
+            height: auto;
+            text-align: center;
+        }
+        .z_content_js {
+            font-size: 16px;
+            text-align: left;
+            text-indent: 25px;
+            width: 400px;
+            display: inline;
+            margin: 0 auto;
+        }
+        .m_content {
+            height: auto;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .z_content_bg {
+            width: 100%;
+            background: url(images/n_bg_bg.gif) center top no-repeat;
+            height: 500px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body onLoad="full_city();selectedValue()">
+<div class="m_nav"><img src="images/logo.png" style="margin-top:10px;" width="160" height="55"/></div>
+<div class="m_content">
+    <div class="z_content_title"><span style="font-size:25px; font-weight:bolder;">新园所接入申请</span><br/>
+        <span style="font-size:14px; color:#999999;">审批流程(提交申请——总部审核——安装使用)</span></div>
+    <div class="z_content_js">
+        <p>1，功能优势，行业领先幼教互动云平台，园长互联网思维，全力支持幼儿园移动信息化建设，助力园所品牌建设。</p><br/>
+
+        <p>2，团队优势。国内幼教行业领军品牌，幼儿园管理精英团队，全力帮您打造园所核心竞争力，塑造园所品牌。</p><br/>
+
+        <p>3，更新优势。产品研发团队深入园所管理一线，与幼儿园直接沟通，了解园所所需，有效及时更新，为新一轮教育信息化竞争加速！</p>
+    </div>
+    <div class="z_content_bg">
+        <table style="margin:0 auto;" width="400" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td width="382">
+                    <table width="0" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="160" height="70"><input
+                                    style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:160px; height:40px; line-height:40px; margin-left:25px;"
+                                    name="" type="text" value="姓名/园所名称"/></td>
+                            <td width="35">&nbsp;</td>
+                            <td width="157"><input
+                                    style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:160px; height:40px; line-height:40px;"
+                                    name="" type="text" value="QQ"/></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <table width="400" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="127" height="49"><SELECT id=city1
+                                                                onChange="eval('city_1('+this.value+')');eval('city_2('+document.all.city2.value+')');getCityValue();"
+                                                                name=city1
+                                                                style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:90px; height:40px; line-height:40px;"
+                                                                type="text">
+                                <OPTION value="" selected>所在省</OPTION>
+                            </SELECT></td>
+                            <td width="125"><SELECT id=city2 onChange="eval('city_2('+this.value+')');getCityValue();"
+                                                    name=city2
+                                                    style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:95px; height:40px; line-height:40px;">
+                                <OPTION value="" selected>所在市</OPTION>
+                            </SELECT></td>
+                            <td width="148"><SELECT id=city3 name=city3 onChange="getCityValue()"
+                                                    style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:95px; height:40px; line-height:40px;">
+                                <OPTION value="" selected>所在县</OPTION>
+                            </SELECT></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td height="75"><input
+                        style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:350px; height:40px; line-height:40px;"
+                        name="" type="text" value="街道地址"/></td>
+            </tr>
+            <tr>
+                <td><input
+                        style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:350px; height:40px; line-height:40px;"
+                        name="" type="text" value="Email"/></td>
+            </tr>
+            <tr>
+                <td height="80"><input
+                        style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:350px; height:40px; line-height:40px;"
+                        name="" type="text" value="园所电话"/></td>
+            </tr>
+            <tr>
+                <td><input
+                        style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:350px; height:40px; line-height:40px;"
+                        name="" type="text" value="园长姓名"/></td>
+            </tr>
+            <tr>
+                <td height="77"><input
+                        style="background:#eeeeee; border:0px; color:#666666; font-size:16px; width:350px; height:40px; line-height:40px;"
+                        name="" type="text" value="园长手机"/></td>
+            </tr>
+        </table>
+        <form style="margin-left:-10px; margin-top:5px;" id="form1" name="form1" method="post" action="">
+            <label>
+                <input style="background:url(images/n_bg_tj.gif) top center no-repeat; border:0px; width:383px; height:53px;"
+                       name="" type="button" value=""/>
+            </label>
+        </form>
+    </div>
+    <br style="clear:both;"/>
+</div>
+<div class="m_foot">Copyright © 2003-2014 ，Allrights Reserved</div>
+</body>
+</html>

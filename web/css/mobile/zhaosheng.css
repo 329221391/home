@@ -1,0 +1,5 @@
+.success{border-radius: 1000px;background:#5cb85c;height:200px;width:200px;margin:30px auto;padding-top:70px;}
+.success div{text-align: center;font-size: 40px;color:#fff}
+.school_info{margin-top: 10px;margin-left:-20px;}
+.school_info li{list-style-type:none;color:#fff;font-size:16px;}
+.footer-pink{height:60px;background:#fe3e64;width:100%;position:fixed;bottom:0px;text-align: center;}

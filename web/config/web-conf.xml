@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-conf>
+    <time>
+        <msg>1800000</msg>
+        <article>7200000</article>
+        <maxtime>172800000</maxtime>
+    </time>
+</web-conf>
