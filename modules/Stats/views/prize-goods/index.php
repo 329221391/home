@@ -14,8 +14,8 @@ $this->params['breadcrumbs'][] = "奖品发货管理";
 
 	<body>
 		<div style="width: 92.5%; height: 150px; float: top;position: absolute; ">
-			<form id="search" method="POST" action="index.php?r=Stats/prize-goods/index">
-				
+			<form id="search" method="get" action="index.php?r=Stats/prize-goods/index">
+				<input type="hidden" name="r" value="Stats/prize-goods/index"></input>
 				<div style="margin: 25px; width: 30%; height: 130px; float: left">
 					<p><h4>获奖人信息</h4></p>
 					<p>获奖人：<input id="name_zh" type="text" name="name_zh" value="<?= $params['name_zh']?>"></input></p>
@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = "奖品发货管理";
 			<div class="pull-right" id="pagination" >
 				<?php
 				echo LinkPager::widget([
-				    'pagination' => $pages
+				    'pagination' => $pages,
 				]);
 			?>
 			</div>

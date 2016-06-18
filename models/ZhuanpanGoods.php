@@ -4,19 +4,7 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "zhuanpan_goods".
- *
- * @property integer $id
- * @property integer $used
- * @property string $goods_name
- * @property integer $count
- * @property integer $type
- * @property integer $value
- * @property string $brand
- * @property string $purpose
- * @property string $image
- */
+
 class ZhuanpanGoods extends \yii\db\ActiveRecord
 {
     /**

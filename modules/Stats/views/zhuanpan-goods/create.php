@@ -7,6 +7,8 @@ $this->params['breadcrumbs'][] = "添加奖品";
 <div class="container" style="padding-right:3em;">
      <div style="padding-right:0.7em;">
 
+
+
         <table class="table table-striped table-hover table-bordered">
             <tr style="background:#5bc0de;color:#fff;">
                 <th class="text-center">商品名称</th>
@@ -19,12 +21,10 @@ $this->params['breadcrumbs'][] = "添加奖品";
                 <th class="text-center">选择图片</th>
                 <th class="text-center">操作</th>
             </tr>
-        <form method="post" action="index.php?r=Stats/zhuanpan-goods/create" enctype="multipart/form-data>
+        <form method="post" action="index.php?r=Stats/zhuanpan-goods/create" enctype="multipart/form-data">
             <tr class="text-center">
                 <td><input type="text" name="goods_name" style=" width: 120px"></input></td>
                 <td><input type="text" name="value" style=" width: 30px"></input></td>
-
-                
 
                 <td>
                     <select name='used' >
