@@ -26,6 +26,7 @@ class ZhuanPanController extends Controller{
         $game_points = $query->select('game_points')->from('customs')->where(['id' => $cid])->one();
         $game_points = $game_points['game_points'];
         $scroll_info = $query->select('scroll_info')->from('zhuanpan_active')->where(['role'=>$cat_default_id])->one();
+
         //var_dump($game_points); exit;
         /*$score = 0;
         $query = new Query();
@@ -37,40 +38,47 @@ class ZhuanPanController extends Controller{
         }*/
 
         //获得最近一期的活动
-        $recent_active = 'select * from zhuanpan_active where active_start_time >'.$current_time1." and role = ".$cat_default_id;
-        $ret = $connection->createCommand($recent_active)->queryAll();
-        if($ret){
-            $date_parse = date_parse(date('Y-m-d H:i',$ret[0]['active_start_time']));
-            $end_time = date('Y-m-d H:i',$ret[0]['active_end_time']);
-            $active = 0;
-           return $this->render('desire',['date_parse'=>$date_parse,
-                                'end_time'=>$end_time,
-                                'active'=>$active,
-                                'cat_default_id'=>$cat_default_id,
-                                'score'=>$game_points,
-                                'custom_name'=>$custom_name,
-                                'custom_id'=>$cid,
-                                'scroll_info'=>$scroll_info]);
-                                
-        }
 
         //查询当前活动的SQL语句
+
         $current_active = 'select * from zhuanpan_active where active_start_time < '.$current_time1.' && '.$current_time1.' < active_end_time and role = '.$cat_default_id;
         $ret = $connection->createCommand($current_active)->queryAll();
+        //var_dump($ret); exit;
         //解析出开奖时间
-        $date_parse = date_parse(date('Y-m-d H:i',$ret[0]['active_start_time']));
-        $end_time = date('Y-m-d H:i',$ret[0]['active_end_time']);
-        $active = 1;
-        //var_dump($game_points); exit;
-        return $this->render('enter',['ret'=>$ret,
-                                      'custom_id'=>$cid,
-                                      'custom_name'=>$custom_name,
-                                      'game_points'=>$game_points,
-                                      'cat_default_id'=>$cat_default_id,
-                                      'date_parse'=>$date_parse,
-                                      'end_time'=>$end_time,
-                                      'active'=>$active,
-                                      'scroll_info'=>$scroll_info]);
+         if ($ret) {
+            $date_parse = date_parse(date('Y-m-d H:i',$ret[0]['active_start_time']));
+            $end_time = date('Y-m-d H:i',$ret[0]['active_end_time']);
+            $active = 1;
+            //var_dump($ret); exit;
+            return $this->render('enter',['ret'=>$ret,
+                                          'custom_id'=>$cid,
+                                          'custom_name'=>$custom_name,
+                                          'game_points'=>$game_points,
+                                          'cat_default_id'=>$cat_default_id,
+                                          'date_parse'=>$date_parse,
+                                          'end_time'=>$end_time,
+                                          'active'=>$active,
+                                          'scroll_info'=>$scroll_info]);
+
+        } else {
+            $recent_active = 'select * from zhuanpan_active where active_start_time >'.$current_time1." and role = ".$cat_default_id;
+            $ret = $connection->createCommand($recent_active)->queryAll();
+
+            if($ret){
+                $date_parse = date_parse(date('Y-m-d H:i',$ret[0]['active_start_time']));
+                $end_time = date('Y-m-d H:i',$ret[0]['active_end_time']);
+                $active = 0;
+               return $this->render('desire',['date_parse'=>$date_parse,
+                                    'end_time'=>$end_time,
+                                    'active'=>$active,
+                                    'cat_default_id'=>$cat_default_id,
+                                    'score'=>$game_points,
+                                    'custom_name'=>$custom_name,
+                                    'custom_id'=>$cid,
+                                    'scroll_info'=>$scroll_info]);
+            }
+            
+        }
     }                       
 
     private function div_user_score($custom_id){

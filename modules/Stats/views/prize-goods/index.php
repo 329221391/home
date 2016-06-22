@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = "奖品发货管理";
 				</tr>
 				<?php foreach($list as $item){ ?>
 				<tr>
-					<td class="text-center" ><?= $item['image']?></td>
+					<td class="text-center" ><img src=<?= $item['image'] ?> ></img></td>
 					<td class="text-center" ><?= $item['name_zh']?></td>
 					<td class="text-center" ><?= $item['phone']?></td>
 					<td class="text-center" ><?= $item['goods_name']?></td>

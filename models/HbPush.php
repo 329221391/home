@@ -3,6 +3,7 @@
 namespace app\models;
 
 
+use app\modules\AppBase\base\appbase\BaseAnalyze;
 use app\modules\AppBase\base\cat_def\CatDef;
 use app\modules\AppBase\base\HintConst;
 use yii\db\Query;
@@ -262,6 +263,11 @@ class HbPush {
 
 
         $receiver_id = $art_sr['reciever_id'];
+
+        //接收者
+        $query = new Query();
+        $receiver = $query->select($this->select_custom)->from('customs')->where(['id'=>$receiver_id])->one();
+
         if($author['cat_default_id'] == HintConst::$ROLE_PARENT) { //家长发的月评价，推送给园长和老师
             $class_id = $art_sr['class_id'];
             //班级
@@ -278,15 +284,13 @@ class HbPush {
             //推送给园长
             $datas = $this->addPushData([$master],$datas);
         }elseif($author['cat_default_id'] == HintConst::$ROLE_TEACHER){//老师发的月评价，推送给家长
-            //接收者
-            $query = new Query();
-            $receiver = $query->select($this->select_custom)->from('customs')->where(['id'=>$receiver_id])->one();
+
             $datas = $this->addPushData([$receiver],$datas);
         }
         if(!empty($datas)){
             $query = new Query();
             $receiver = $query->select($this->select_custom)->from('customs')->where(['id'=>$receiver_id])->one();
-            $this->push($datas,'-75-'.$id.'-0-0-0',$receiver,null);
+            $this->push($datas,'-75-'.$id.'-'.$receiver['school_id'].'-'.$receiver['class_id'].'-'.$receiver['id'],$receiver,null);
         }
     }
 
@@ -301,7 +305,10 @@ class HbPush {
         $author = $query->select($this->select_custom)->from('customs')->where(['id'=>$art_sr['sender_id']])->one();
         $datas = [];
 
-
+        $receiver_id = $art_sr['reciever_id'];
+        //接收者
+        $query = new Query();
+        $receiver = $query->select($this->select_custom)->from('customs')->where(['id'=>$receiver_id])->one();
 
         if($author['cat_default_id'] == HintConst::$ROLE_PARENT) { //家长发的年评价，推送给园长和老师
             $class_id = $art_sr['class_id'];
@@ -319,14 +326,11 @@ class HbPush {
             //推送给园长
             $datas = $this->addPushData([$master],$datas);
         }elseif($author['cat_default_id'] == HintConst::$ROLE_TEACHER){//老师发的年评价，推送给家长
-            $receiver_id = $art_sr['reciever_id'];
-            //接收者
-            $query = new Query();
-            $receiver = $query->select($this->select_custom)->from('customs')->where(['id'=>$receiver_id])->one();
+
             $datas = $this->addPushData([$receiver],$datas);
         }
         if(!empty($datas)){
-            $this->push($datas,'-229-'.$id.'-0-0-0');
+            $this->push($datas,'-229-'.$id.'-'.$receiver['school_id'].'-'.$receiver['class_id'].'-'.$receiver['id']);
         }
     }
 
@@ -524,6 +528,10 @@ class HbPush {
         }
     }
 
+    public function replyPicPush(){
+
+    }
+
     //发布俱乐部 话题:101 求助102 教师学习103 家长学习104 招生安全105 政策趋势106
     //$ret = $xgProxy->pushByTokenSimple($token,'title','207-106-10-20734-650-0-5706');
     public function createClubPush($id,$type_id){
@@ -572,7 +580,7 @@ class HbPush {
         $master_user = $query->select($this->select_custom)->from('customs')->where(['id'=>$school['headmaster_id']])->one();
 
         $datas = $this->addPushData([$master_user],$datas);
-        $this->push($datas,'-'.$type_id.'-'.$id.'-0-0-0');
+        $this->push($datas,'-'.$type_id.'-'.$id.'-'.$master_user['school_id'].'-0-'.$master_user['id']);
     }
 
 
@@ -596,52 +604,68 @@ class HbPush {
 
 
     public function push($account_datas,$content,$receiver = null,$sender = null){
+        $ba = new BaseAnalyze();
         foreach ($account_datas as $platform=>$datas_role) {
             foreach ($datas_role as $role=>$accounts) {
                 $xgInstance = XingeProxyFactory::getXingeProxy($platform,$role);
-                var_dump($platform.'_'.$role);
-                var_dump($accounts);
-                echo '<br/>';
+                //var_dump($platform.'_'.$role);
+                //var_dump($accounts);
+                //echo '<br/>';
+
                 $tempContent = $content;
                 $tempContent = $this->getRoleCode($role).$tempContent;
-                var_dump($tempContent);
-                echo '<br/>';
+                $ba->writeToAnal($platform.'_'.$role);
+                $ba->writeToAnal($tempContent);
+                //var_dump($tempContent);
+                //echo '<br/>';
                 if($platform == 'android'){
                     $ret = $xgInstance->pushByAccountListSimple($accounts,'title',$tempContent);
                 }elseif($platform == 'ios'){
                     $title = $this->getHead($content,$receiver,$sender);
                     $ret = $xgInstance->pushByAccountListSimple($accounts,$title,$tempContent);
                 }
-                var_dump($ret);
-                echo '<br />';
+                //var_dump($ret);
+                //echo '<br />';
+                $ba->writeToAnal($ret);
             }
         }
     }
 
     public function pushByTag($tag,$content,$receiver = null,$sender = null){
-        $platform = 'android';
-        $role = 'master';
-        $xgInstance = XingeProxyFactory::getXingeProxy($platform,$role);
+        $ba = new BaseAnalyze();
+        try{
+            $platform = 'android';
+            $role = 'master';
+            $xgInstance = XingeProxyFactory::getXingeProxy($platform,$role);
 
-        var_dump($platform.'_'.$role);
-        echo '<br/>';
-        $tempContent = $content;
-        $tempContent = $this->getRoleCode($role).$tempContent;
-        var_dump($tempContent);
-        echo '<br/>';
-        $ret = $xgInstance->pushByTagSimple($tag,'title',$tempContent);
-        var_dump($ret);
-        echo '<br />';
+            //var_dump($platform.'_'.$role);
+            //echo '<br/>';
+            $ba->writeToAnal($platform.'_'.$role);
+            $tempContent = $content;
+            $tempContent = $this->getRoleCode($role).$tempContent;
+            //var_dump($tempContent);
+            //echo '<br/>';
+            $ba->writeToAnal($tempContent);
 
-        $platform = 'ios';
-        $role = 'master';
-        $xgInstance = XingeProxyFactory::getXingeProxy($platform,$role);
-        var_dump($platform.'_'.$role);
-        echo '<br/>';
-        $title = $this->getHead($content,$receiver,$sender);
-        $ret = $xgInstance->pushByTagSimple($tag,$title,$tempContent);
-        var_dump($ret);
-        echo '<br />';
+            $ret = $xgInstance->pushByTagSimple($tag,'title',$tempContent);
+            //var_dump($ret);
+            //echo '<br />';
+            $ba->writeToAnal($ret);
+
+            $platform = 'ios';
+            $role = 'master';
+            $xgInstance = XingeProxyFactory::getXingeProxy($platform,$role);
+            //var_dump($platform.'_'.$role);
+            //echo '<br/>';
+            $title = $this->getHead($content,$receiver,$sender);
+            $ret = $xgInstance->pushByTagSimple($tag,$title,$tempContent);
+            $ba->writeToAnal($ret);
+            //var_dump($ret);
+            //echo '<br />';
+        }catch(\Exception $e){
+
+        }
+
     }
 
     public function &addPushData($customs,&$datas){

@@ -4,6 +4,7 @@ namespace app\modules\Stats\controllers;
 
 
 use app\modules\AppBase\base\appbase\StatsBC;
+use app\models\ZhuanpanGoods;
 use yii\db\Query;
 use yii;
 
@@ -22,6 +23,11 @@ class ZhuanpanGoodsController extends  StatsBC{
 
         //$query = new Query();
         //$base_num = 100000;
+        /*$file_name=$zhuanpan_goods[0]["image"];
+        print_r($file_name);exit;
+        $str = explode(".",$file_name);
+        echo("asdfasdf".$str[1]);
+        exit;*/
         return $this->render('index',['zhuanpan_goods'=>$zhuanpan_goods]);
     }
 
@@ -31,31 +37,12 @@ class ZhuanpanGoodsController extends  StatsBC{
         if(!$request->getIsPost()){
           return $this->render('create');
         }
-
-        $image = "";
-        if ($_FILES['file']['error'] > 0) {
-            echo "文件上传失败：".$_FILES['file']['error']."<br>";
-        } else {
-            $image = "images/zhuanpan/goods/".time().".png";
-            move_uploaded_file($_FILES["file"]["tmp_name"], $image);
-            exit;
-        }
-        
-/*if ($_FILES["file"]["error"] > 0)
-  {
-  echo "Error: " . $_FILES["file"]["error"] . "<br />";
-  }
-else
-  {
-    var_dump($_FILES["file"]);
-  echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-  echo "Type: " . $_FILES["file"]["type"] . "<br />";
-  echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-  echo "Stored in: " . $_FILES["file"]["tmp_name"];
-  exit;
-  }*/
-        
-
+        //根据上传的图片文件生成缩略图并保存
+        $image = $request->post('image');
+        $zhuanpan_goods = new ZhuanpanGoods();
+        $file = $_FILES['file'];
+        $image = $zhuanpan_goods->uploadImage($file,$image);
+        //通过Post方式接收页面传来的奖品数据
         $goods_name = $request->post('goods_name');
         $value = $request->post('value');
         $used = $request->post('used');
@@ -88,11 +75,17 @@ else
             }
             //var_dump($id);exit;
             $query = new Query();
-            $good = $query->select('*')->from('zhuanpan_goods')->where(['id'=>$id])->one();
+            $goods = $query->select('*')->from('zhuanpan_goods')->where(['id'=>$id])->one();
             //var_dump($good); exit;
-            return $this->render('edit',['good'=>$good]);
+            return $this->render('edit',['good'=>$goods]);
         }
-
+        //根据上传的图片文件生成缩略图并保存
+        $zhuanpan_goods = new ZhuanpanGoods();
+        $file = $_FILES['file'];
+        //得到原始图片
+        $image = $request->post('image');
+        $image = $zhuanpan_goods->uploadImage($file,$image);
+        //通过Post方式接收页面传来的奖品数据
         $goods_name = $request->post('goods_name');
         $role = $request->post('role');
         $value = $request->post('value');
@@ -103,11 +96,6 @@ else
         $purpose = $request->post('purpose');
         $base_num = $request->post('base_num');
         $id = $request->post('id',0);
-        //var_dump($id); exit;
-        $imageName = $request->post('image');
-        //获得图片路径
-        $image = "/images/zhuanpan/goods/".$imageName;
-        
         //更新表数据
         $connection = \Yii::$app->db;
         $connection->createCommand()->update('zhuanpan_goods',[
@@ -129,6 +117,14 @@ else
       $request = Yii::$app->request;
       $id = $request->get('id',0);
       $connection = Yii::$app->db;
+      $query = new Query();
+      $image = $query->select('image')->from('zhuanpan_goods')->where(['id'=>$id])->one();
+      //删除原图和缩略图
+      $thumb = explode('.',$image['image']);
+      $thumb = $thumb[0]."_thumb.".$thumb[1];
+      unlink($image['image']);
+      unlink($thumb);
+      //更新数据库
       $sql = "delete from zhuanpan_goods where id = ".$id;
       $ret = $connection->createCommand($sql)->execute();
       return $this->redirect('index.php?r=Stats/zhuanpan-goods/index');

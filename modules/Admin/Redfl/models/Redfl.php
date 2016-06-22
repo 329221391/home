@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\admin\Redfl\models;
+use app\models\HbPush;
 use app\modules\Admin\CheckIn\models\CheckIn;
 use app\modules\Admin\Custom\models\Customs;
 use app\modules\AppBase\base\appbase\Asyn;
@@ -103,13 +104,16 @@ class Redfl extends BaseAR
                 $dd['related_id'] = $Content;
                 $dd['custom_id'] = $d['author_id'];
                 $score->addRf($dd);
-                $this->push($d['receiver_id'], $d['pri_type_id'], $Content);
-
+                //$this->push($d['receiver_id'], $d['pri_type_id'], $Content);
 
                 //添加考勤功能
                 $checkin = new CheckIn();
                 $check_date = strtotime($d['createtime']);
                 $checkin->create($d['receiver_id'],$d['author_id'],0,$check_date,1);
+
+                //新的推送
+                $hbPush = new HbPush();
+                $hbPush->createFlowerPush($Content);
 
             } else {
                 $ErrCode = HintConst::$NoRecord;

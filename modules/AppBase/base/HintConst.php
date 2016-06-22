@@ -18,6 +18,7 @@ class HintConst
     public static $WEBTYPE_MEVA = 3;
     public static $WEBTYPE_YEVA = 4;
     public static $Pic_Width = 400;// width of pic thumb
+    public static $Thumb_Max_Width = 100;
     public static $Pic_Quality = 75;//height of pic thumb
     //---------数据库分类catdefault默认值
     public static $CUSTOM_PATH = 1;//用户路径

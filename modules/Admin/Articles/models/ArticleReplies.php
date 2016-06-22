@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\Admin\Articles\models;
+use app\models\HbPush;
 use app\modules\AppBase\base\appbase\base\BaseReply;
 use app\modules\AppBase\base\appbase\TransAct;
 use app\modules\AppBase\base\cat_def\CatDef;
@@ -210,68 +211,87 @@ class ArticleReplies extends BaseReply
                 $data['contents'] = $d['contents'];
                 $score->ReplyPoint($data);
             }
-            $m = (new Articles())->getFeild('id', $d['article_id']);
-            $receiver = (new ArticleSendRevieve())->getFeild('article_id', $d['article_id']);
-            if ($m !== null) {//月评价和年终总结回复
-                if ($m->article_type_id == CatDef::$mod['moneva'] || $m->article_type_id == CatDef::$mod['termeva']) {
-                    //推送给评价或总结的的接受人
-                    if ($d['reply_id'] == 0 || $d['link_id'] == 0) {
-                        (new Articles())->pushReplyForEva($d['article_id'], $receiver->reciever_id, $d['contents']);
-                    }else{//如果是二级回复,只推送给reply_id指定的人
-                        //需要推送给园长
-                        //查询园长的id
-                        /*$query = new Query();
-                        $ret = $query->select('schools.headmaster_id')
-                            ->from('articles')
-                            ->leftJoin('schools','schools.id=articles.school_id')
-                            ->where(['articles.id'=>$d['article_id']])
-                            ->one();
-                        (new BaseAnalyze())->writeToAnal("aaaaaaaaaaa:".var_export($ret,true));
-                        if($ret){
-                            (new BaseAnalyze())->writeToAnal("bbbbbbbbbb:".$ret['headmaster_id']);
-                            (new Articles())->pushReplyForEva($d['article_id'], $ret['headmaster_id'], $d['contents']);
-                        }*/
-                        //建超原来的，能推送给老师
-                        //(new Articles())->pushReplyForEva($d['article_id'], $receiver->reciever_id, $d['contents']);
-                        //推送给被回复人
-                        $query = new Query();
-                        $receive_user  = $query->select('id,token,school_id,token_type,class_id,cat_default_id')->from('customs')->where(['id'=>$d['reply_id']])->one();
-                        if($receive_user){
-                            //这里的class_id应该条评价记录的class_id
-                            $query = new Query();
-                            $pingjia = $query->select('id,class_id')->from('articles')->where(['id'=>$d['article_id']])->one();
-                            if($pingjia){
-                                $content_str = '65-'.$m->article_type_id.'-'.$d['article_id'].'-'.$receive_user['school_id'].'-'.$pingjia['class_id'].'-'.$receiver['reciever_id'];
-                                $ret = XgPush::PushSingleToken(['type'=>$content_str,'head'=>'','body'=>'收到新的评价:'.$d['contents']],$receive_user);
-                            }
 
-                            //die(var_export($ret,true));
-                        }
-                    }
+            //新的推送逻辑
+            $hbPush = new HbPush();
 
-
-
-
-
-                } else {//文章回复
-                    if ($d['reply_id'] > 0 || $d['link_id'] > 0) {//如果是二级回复,只推送给reply_id指定的人
-                        //建超以前的 wfk!
-                        //(new Articles())->pushReplyReplyByArid($d['article_id'], $newid, $d['reply_id'], $d['contents']);
-                        $query = new Query();
-                        $receive_user  = $query->select('id,token,school_id,token_type,class_id,cat_default_id')->from('customs')->where(['id'=>$d['reply_id']])->one();
-                        if($receive_user){
-                            $content_str = '65-73-'.$newid.'-'.$receive_user['school_id'].'-'.$receive_user['class_id'].'-'.$receive_user['id'];
-                            $ret = XgPush::PushSingleToken(['type'=>$content_str,'head'=>'','body'=>'文章新回复:'.$d['contents']],$receive_user);
-                            //die(var_export($ret,true));
-                        }
-
-                    } else {
-                    	(new BaseAnalyze())->writeToAnal('reply()');
-                        (new Articles())->pushReplyByArid($d['article_id'], $newid, $d['contents']);
-                        //(new BaseAnalyze())->writeToAnal(var_export(debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT,5),true));
-                    }
-                }
+            $query = new Query();
+            $art = $query->select('')->from('articles')->where(['id'=>$d['article_id']])->one();
+            if($art['article_type_id'] == CatDef::$mod['article']){ //回复文章
+                $hbPush->replyArtContentPush($newid);
+            }elseif($art['article_type_id'] == CatDef::$mod['moneva']){ //回复月评价
+                $hbPush->replyBabyPingjiaReply($newid,$art['article_type_id']);
+            }elseif($art['article_type_id'] == CatDef::$mod['termeva']) { //回复年评价
+                $hbPush->replyBabyPingjiaReply($newid,$art['article_type_id']);
+            }elseif($art['article_type_id'] == CatDef::$mod['pic']){ //回复照片
+                //TODO
             }
+
+
+//            $m = (new Articles())->getFeild('id', $d['article_id']);
+//            $receiver = (new ArticleSendRevieve())->getFeild('article_id', $d['article_id']);
+//            if ($m !== null) {//月评价和年终总结回复
+//                if ($m->article_type_id == CatDef::$mod['moneva'] || $m->article_type_id == CatDef::$mod['termeva']) {
+//                    //推送给评价或总结的的接受人
+//                    if ($d['reply_id'] == 0 || $d['link_id'] == 0) {
+//                        /*张亮说先暂时不要回复的推送了(new Articles())->pushReplyForEva($d['article_id'], $receiver->reciever_id, $d['contents']);*/
+//
+//                    }else{//如果是二级回复,只推送给reply_id指定的人
+//                        //需要推送给园长
+//                        //查询园长的id
+//                        /*$query = new Query();
+//                        $ret = $query->select('schools.headmaster_id')
+//                            ->from('articles')
+//                            ->leftJoin('schools','schools.id=articles.school_id')
+//                            ->where(['articles.id'=>$d['article_id']])
+//                            ->one();
+//                        (new BaseAnalyze())->writeToAnal("aaaaaaaaaaa:".var_export($ret,true));
+//                        if($ret){
+//                            (new BaseAnalyze())->writeToAnal("bbbbbbbbbb:".$ret['headmaster_id']);
+//                            (new Articles())->pushReplyForEva($d['article_id'], $ret['headmaster_id'], $d['contents']);
+//                        }*/
+//                        //建超原来的，能推送给老师
+//                        //(new Articles())->pushReplyForEva($d['article_id'], $receiver->reciever_id, $d['contents']);
+//                        //推送给被回复人
+//
+//
+//                        /*张亮说先暂时不要回复的推送了$query = new Query();
+//                        $receive_user  = $query->select('id,token,school_id,token_type,class_id,cat_default_id')->from('customs')->where(['id'=>$d['reply_id']])->one();
+//                        if($receive_user){
+//                            //这里的class_id应该条评价记录的class_id
+//                            $query = new Query();
+//                            $pingjia = $query->select('id,class_id')->from('articles')->where(['id'=>$d['article_id']])->one();
+//                            if($pingjia){
+//                                $content_str = '65-'.$m->article_type_id.'-'.$d['article_id'].'-'.$receive_user['school_id'].'-'.$pingjia['class_id'].'-'.$receiver['reciever_id'];
+//                                $ret = XgPush::PushSingleToken(['type'=>$content_str,'head'=>'','body'=>'收到新的评价:'.$d['contents']],$receive_user);
+//                            }
+//
+//                        }*/
+//                    }
+//
+//
+//
+//
+//
+//                } else {//文章回复
+//                    /*张亮说先暂时不要回复的推送了if ($d['reply_id'] > 0 || $d['link_id'] > 0) {//如果是二级回复,只推送给reply_id指定的人
+//                        //建超以前的 wfk!
+//                        //(new Articles())->pushReplyReplyByArid($d['article_id'], $newid, $d['reply_id'], $d['contents']);
+//                        $query = new Query();
+//                        $receive_user  = $query->select('id,token,school_id,token_type,class_id,cat_default_id')->from('customs')->where(['id'=>$d['reply_id']])->one();
+//                        if($receive_user){
+//                            $content_str = '65-73-'.$newid.'-'.$receive_user['school_id'].'-'.$receive_user['class_id'].'-'.$receive_user['id'];
+//                            $ret = XgPush::PushSingleToken(['type'=>$content_str,'head'=>'','body'=>'文章新回复:'.$d['contents']],$receive_user);
+//                            //die(var_export($ret,true));
+//                        }
+//
+//                    } else {
+//                    	(new BaseAnalyze())->writeToAnal('reply()');
+//                        (new Articles())->pushReplyByArid($d['article_id'], $newid, $d['contents']);
+//                        //(new BaseAnalyze())->writeToAnal(var_export(debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT,5),true));
+//                    }*/
+//                }
+//            }
         } else {
             $ErrCode = HintConst::$ReplyNoData;
         }

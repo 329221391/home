@@ -94,13 +94,13 @@ class NotesReplies extends BaseReply
                 $this->pushReplyByNoteid($d['note_id'], $d['contents']);
             } else {
                 //$this->pushReplyByRecieverid($d['note_id'], $d['receiver_id'], $d['contents']);
-                $query = new Query();
+                /*张亮说先暂时不要回复的推送了$query = new Query();
                 $receive_user  = $query->select('id,token,school_id,token_type,class_id,cat_default_id')->from('customs')->where(['id'=>$d['receiver_id']])->one();
                 if($receive_user){
                     $content_str = '65-252-'.$d['note_id'].'-'.$receive_user['school_id'].'-'.$receive_user['class_id'].'-'.$receive_user['id'];
                     $ret = XgPush::PushSingleToken(['type'=>$content_str,'head'=>'','body'=>'通知新回复:'.$d['contents']],$receive_user);
                     //die(var_export($ret,true));
-                }
+                }*/
             }
         }
         $result = ['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' => $Content];

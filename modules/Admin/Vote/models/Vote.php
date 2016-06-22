@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\Admin\Vote\models;
+use app\models\HbPush;
 use app\modules\Admin\Articles\models\Articles;
 use app\modules\Admin\Articles\models\ArticlesFav;
 use app\modules\Admin\Custom\models\Customs;
@@ -159,18 +160,25 @@ class Vote extends BaseMain
                 $Content = $dcon['m_id'] = $dsr['m_id'] = $this->addNew($d);
                 $votecon = new VoteCon();
                 $votecon->addNew($dcon);
+
                 if (!($pri_type_id == CatDef::$mod['club_arti'] || $pri_type_id == CatDef::$mod['club_teacher'] || $pri_type_id == CatDef::$mod['club_parent'] || $pri_type_id == CatDef::$mod['club_topic'] || $pri_type_id == CatDef::$mod['club_help'] || $pri_type_id == CatDef::$mod['club_se'] || $pri_type_id == CatDef::$mod['club_po'])) {
                     $votesr = new VoteSR();
                     $votesr->addSR($dsr);
-                    $this->push($dsr, $Content, $d['title']);
+                    //新的推送
+                    $hbPush = new HbPush();
+                    $hbPush->createVotePush($Content);
+                    //$this->push($dsr, $Content, $d['title']);
                     //园长只有coin没有point.所以园长发调查既没有积分也没有金币
-                } else {
+                } else {//发布俱乐部
                     $score = new Score();
                     $data['sub_type_id'] = $d['pri_type_id'];
                     $data['related_id'] = $Content;
                     $data['contents'] = $d['title'];
                     $score->ClubArtiCreate($data);
-                    $this->pushaddclub($d['pri_type_id'] . '-' . $Content, $d['title']);
+                    //新的推送
+                    $hbPush = new HbPush();
+                    $hbPush->createClubPush($Content,$pri_type_id);
+                    //$this->pushaddclub($d['pri_type_id'] . '-' . $Content, $d['title']);
                 }
             } else {
                 $ErrCode = HintConst::$No_more_point;

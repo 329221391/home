@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\Admin\Notes\models;
+use app\models\HbPush;
 use app\modules\Admin\Custom\models\Customs;
 use app\modules\Admin\Message\models\Messages;
 use app\modules\AppBase\base\appbase\Asyn;
@@ -165,7 +166,17 @@ class Notes extends BaseMain
                 $data['contents'] = $d['title'];
                 $score->NoteCreate($data);
             }
-            $this->push($d, $newid[0]);
+
+            //新的推送
+            $hbPush = new HbPush();
+            if($d['ispassed'] == 211){
+                $hbPush->createNotePush($newid[0]);
+            }else{
+                $hbPush->auditPush($newid[0],'883-252');
+            }
+
+            //$this->push($d, $newid[0]);
+
             $ErrCode = HintConst::$Zero;
             $Message = HintConst::$Success;
             $Content = $newid[0];
@@ -463,13 +474,16 @@ class Notes extends BaseMain
                 $messages = new Messages();
                 $result = $messages->Sendmsg($message, $receiver_id);
                 //$this->push1($receiver_id, $message);
-                $user = explode('-', $receiver_id);
-                $custom = new Customs();
-                $token = $custom->getToken([], [], $user);
-                (new MultThread())->push_msg($token, $message);
+                //$user = explode('-', $receiver_id);
+                //$custom = new Customs();
+                //$token = $custom->getToken([], [], $user);
+                //(new MultThread())->push_msg($token, $message);
+                //新版推送
+                $hbPush = new HbPush();
+                $hbPush->createNotePush($value);
             }
         }
-        self::pushAuditById($id[0], $title);
+        //self::pushAuditById($id[0], $title);
         $result = ['ErrCode' => '0', 'Message' => HintConst::$Success, 'Content' => HintConst::$NULLARRAY];
         return (json_encode($result));
     }

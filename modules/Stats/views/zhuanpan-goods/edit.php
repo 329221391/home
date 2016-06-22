@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = "编辑奖品";
                 <th class="text-center">选择图片</th>
                 <th class="text-center">操作</th>
             </tr>
-        <form method="post" action="index.php?r=Stats/zhuanpan-goods/edit" >
+        <form method="post" action="index.php?r=Stats/zhuanpan-goods/edit" enctype="multipart/form-data" >
             <input type="hidden" name="id" value="<?= $good['id']?>">
             <tr class="text-center">
                 <td><input type="text" name="goods_name" value="<?= $good['goods_name'] ?>" style=" width: 120px"></input></td>
@@ -45,8 +45,8 @@ $this->params['breadcrumbs'][] = "编辑奖品";
                 <td><input type="text" name="purpose" value="<?= $good['purpose']?>" style=" width: 150px"></input></td>
 
                 <td>
-                    <input id="image" type="file" class="file" name="image" accept="image/*" value="" style=" width: 150px">
-                    </input>
+                    <input id="image" type="file" name="file" value="<?= $good['image']?>" accept="image/*" style=" width: 150px"></input>
+                    <input type="hidden" name="image" value="<?= $good['image']?>"></input>
                 </td>
                 
                 <td>
@@ -68,9 +68,7 @@ $this->params['breadcrumbs'][] = "编辑奖品";
             $("form").submit();
             return;
         });
-
         $(".btn-warning").click(function(){
-
             $(':input').not(':button,:reset,:submit').val('');
             return;
         });

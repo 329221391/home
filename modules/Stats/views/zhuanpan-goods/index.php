@@ -25,7 +25,18 @@ $this->params['breadcrumbs'][] = "奖品管理";
 
             <?php foreach ($zhuanpan_goods as $k => $v) { ?>
                 <tr class="text-center">
-                    <td><img src=<?= $v['image']?>  ></img></td>
+                    <td style="width:100px;height:75px" >
+                    <!--显示缩略图-->
+                        <img id="image" style="display:<?php $fileName = $v['image']; echo strlen($fileName) < 25 ? 'none' : 'block' ?>" src=
+                            <?php 
+                                $fileName = $v['image'];
+                                if(strlen($fileName) > 25){
+                                    $str=explode('.', $fileName);
+                                    echo $str[0]."_thumb.".$str[1];
+                                } else echo 0;
+                            ?>
+                        </img>
+                    </td>
                     <td><?= $v['goods_name'] ?></td>
                     <td><?= $v['value'] ?></td>
                     
@@ -67,8 +78,14 @@ $this->params['breadcrumbs'][] = "奖品管理";
             <?php } ?>
         </table>
     </div>
-
 </div>
-
+<script type="text/javascript">
+    $(function(){
+        var src = $('#image').attr('src');
+        if( src == 0){
+            $('#image').css('display','none');
+        };
+    });
+</script>
 
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\Admin\Articles\models;
+use app\models\HbPush;
 use app\modules\Admin\Custom\models\Customs;
 use app\modules\Admin\Message\models\Messages;
 use app\modules\AppBase\base\appbase\Asyn;
@@ -302,17 +303,21 @@ class ArticleAttachment extends BaseAR
                 $messages = new Messages();
                 $result = $messages->Sendmsg($message,$receiver_id);
                 //$this->push1($receiver_id, $message);
-                $user = explode('-', $receiver_id);
+                /*$user = explode('-', $receiver_id);
                 $custom = new Customs();
                 $token = $custom->getToken([], [], $user);
-                (new MultThread())->push_msg($token, $message);
+                (new MultThread())->push_msg($token, $message);*/
+                //新的推送
+                $hbPush = new HbPush();
+                $hbPush->createPicPush($ar_id);
+
 
             }
         } else {
             $result = ['ErrCode' => '1', 'Message' => '缺少参数', 'Content' => ''];
             return (json_encode($result));
         }
-        (new Articles())->pushAuditByArid($ar_id, $data['contents']);
+        //(new Articles())->pushAuditByArid($ar_id, $data['contents']);
         $result = ['ErrCode' => '0', 'Message' => '审核成功', 'Content' => ''];
         return (json_encode($result));
     }

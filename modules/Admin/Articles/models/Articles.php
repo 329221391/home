@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\Admin\Articles\models;
+use app\models\HbPush;
 use app\modules\Admin\Custom\models\Customs;
 use app\modules\Admin\Message\models\Messages;
 use app\modules\Admin\Notes\models\NotesReplies;
@@ -1098,18 +1099,60 @@ class Articles extends BaseMain
                     $push_data['type'] = $article_type_id;
                     $push_data['title'] = $d['title'];
 
-                    $school = [];
+
+                    //原先的推送
+                    /*$school = [];
                     $class = [];
                     $user = [];
                     (new Articles())->getSchoolAndClassAndUserForArti($school, $class, $user, $push_data);
                     $custom = new Customs();
                     $token = $custom->getToken($school, $class, $user, $push_data['role']);
-                    //die(var_export($token,true));
-                    (new MultThread())->push_ar($token, $push_data['type'], $push_data['id'], $push_data['title']);
+                    (new MultThread())->push_ar($token, $push_data['type'], $push_data['id'], $push_data['title']);*/
+
+                    //新的推送
+                    //家长端发评价不需要审核
+                    if($this->getCustomRole() == HintConst::$ROLE_PARENT &&
+                        ($d['article_type_id'] == CatDef::$mod['moneva']
+                            || $d['article_type_id'] == CatDef::$mod['termeva'])){
+                        $ispass = HintConst::$YesOrNo_YES;
+
+                    }else{
+                        $ispass = $this->getIsCanSend();
+
+                    }
+                    $hbPush = new HbPush();
+                    if($ispass == 211){
+                        if($article_type_id == CatDef::$mod['article']){
+                            $hbPush->createArtPush($Content);
+                        }elseif($article_type_id == CatDef::$mod['moneva']){
+                            $hbPush->createYuePjPush($Content);
+                        }elseif($article_type_id == CatDef::$mod['termeva']){
+                            $hbPush->createNianPjPush($Content);
+                        }elseif($article_type_id == CatDef::$mod['pic']){
+                            $hbPush->createPicPush($Content);
+                        }
+                    }else{
+
+                        $type_str = '881-73';
+                        if($article_type_id == CatDef::$mod['article']){
+                            $type_str= '881-73';
+                        }elseif($article_type_id == CatDef::$mod['moneva']){
+                            $type_str = '882-75';
+                        }elseif($article_type_id == CatDef::$mod['termeva']){
+                            $type_str = '882-229';
+                        }elseif($article_type_id == CatDef::$mod['pic']){
+                            $type_str = '880-222';
+                        }
+
+                        $hbPush->auditPush($Content,$type_str);
+                    }
+
+
+
 
                 }else{//建超原有逻辑,又让服务器发送了一个http请求,自己请求自己,搞毛,还嫌不够慢?  - -!
                     //如果是家长发布月评价或年终总结
-                    if($this->getCustomRole() == HintConst::$ROLE_PARENT
+                    /*if($this->getCustomRole() == HintConst::$ROLE_PARENT
                         && ($article_type_id == HintConst::$YUEPINGJIA_PATH || $article_type_id == HintConst::$NIANPINGJIA_PATH)){
                         //给老师发推送
                         $query = new Query();
@@ -1123,6 +1166,44 @@ class Articles extends BaseMain
 
                     }else{
                         $this->push($role, $school, $class, $user, $article_type_id, $Content, $d['title']);
+                    }*/
+                    //新的推送
+                    //家长端发评价不需要审核
+                    if($this->getCustomRole() == HintConst::$ROLE_PARENT &&
+                        ($d['article_type_id'] == CatDef::$mod['moneva']
+                            || $d['article_type_id'] == CatDef::$mod['termeva'])){
+                        $ispass = HintConst::$YesOrNo_YES;
+
+                    }else{
+                        $ispass = $this->getIsCanSend();
+
+                    }
+                    $hbPush = new HbPush();
+                    if($ispass == 211){
+                        if($article_type_id == CatDef::$mod['article']){
+                            $hbPush->createArtPush($Content);
+                        }elseif($article_type_id == CatDef::$mod['moneva']){
+                            $hbPush->createYuePjPush($Content);
+                        }elseif($article_type_id == CatDef::$mod['termeva']){
+                            $hbPush->createNianPjPush($Content);
+                        }elseif($article_type_id == CatDef::$mod['pic']){
+                            $hbPush->createPicPush($Content);
+                        }
+
+                    }else{
+
+                        $type_str = '881-73';
+                        if($article_type_id == CatDef::$mod['article']){
+                            $type_str= '881-73';
+                        }elseif($article_type_id == CatDef::$mod['moneva']){
+                            $type_str = '882-75';
+                        }elseif($article_type_id == CatDef::$mod['termeva']){
+                            $type_str = '882-229';
+                        }elseif($article_type_id == CatDef::$mod['pic']){
+                            $type_str = '880-222';
+                        }
+
+                        $hbPush->auditPush($Content,$type_str);
                     }
 
                 }
@@ -1134,6 +1215,52 @@ class Articles extends BaseMain
             return json_encode(['ErrCode' => HintConst::$No_success, 'Message' => HintConst::$NULL, 'Content' => HintConst::$NULLARRAY]);
         }
     }
+
+
+
+
+    public function pushCreateArt($article_id){
+        $hbPush = new HbPush();
+        $query = new Query();
+        $article  = $query->select('id,article_type_id,school_id,class_id,author_id')->from('articles')->where(['id'=>$article_id])->one();
+        if(!$article ){
+            return;
+        }
+
+        if($article['ispassed'] == 212){ //待审核
+            $type = '';
+            if($article['article_type_id'] == CatDef::$mod['article']){
+                $type = '881-73';
+            }elseif($article['article_type_id'] == CatDef::$mod['pic']){
+                $type = '880-222';
+            }elseif($article['article_type_id'] == CatDef::$mod['moneva']){
+                $type = '882-75';
+            }elseif($article['article_type_id'] == CatDef::$mod['termeva']){
+                $type = '882-229';
+            }
+            $hbPush->auditPush($article['id'],$type);
+            return;
+        }
+
+        if($article['article_type_id'] == CatDef::$mod['article']){ //文章
+            $hbPush->createArtPush($article['id']);
+        }elseif($article['article_type_id'] == CatDef::$mod['pic']){ //照片
+            $hbPush->createPicPush($article['id']);
+        }elseif($article['article_type_id'] == CatDef::$mod['moneva']){ //月评价
+            $hbPush->createYuePjPush($article['id']);
+        }elseif($article['article_type_id'] == CatDef::$mod['termeva']){ //年评价
+            $hbPush->createNianPjPush($article['id']);
+        }elseif($article['article_type_id'] == CatDef::$mod['letter']){ //感谢信
+            $hbPush->createLetterPush($article['id']);
+        }elseif($article['article_type_id'] == CatDef::$mod['praise']){ //鼓励
+            $hbPush->createPraisePush($article[id]);
+        }
+    }
+
+
+
+
+
     public function  addArticle($d, $role, $school, $class, $user, $type)
     {
 
@@ -1519,17 +1646,27 @@ class Articles extends BaseMain
                 $messages = new Messages();
                 $result = $messages->Sendmsg($message, $receiver_id);
                 //$this->push1($receiver_id, $message);
-                $user = explode('-', $receiver_id);
-                $custom = new Customs();
-                $token = $custom->getToken([], [], $user);
-                (new MultThread())->push_msg($token, $message);
+                //$user = explode('-', $receiver_id);
+                //$custom = new Customs();
+                //$token = $custom->getToken([], [], $user);
+                //(new MultThread())->push_msg($token, $message);
+                //新版推送
+                $hbPush = new HbPush();
+                if($type == HintConst::$ARTICLE_PATH){
+                    $hbPush->createArtPush($value);
+                }elseif($type == HintConst::$YUEPINGJIA_PATH){
+                    $hbPush->createYuePjPush($value);
+                }elseif($type == HintConst::$NIANPINGJIA_PATH){
+                    $hbPush->createNianPjPush($value);
+                }
+
                 //parent::myjsonencode($result);
                 //echo http_get($host.'/index.php?r=Message/messages/sendmsg&reciever_id='.$receiver_id.'&contents='.$message);
 
             }
         }
-        $ar = new Articles();
-        $ar->pushAuditByArid($ar_id, $data['contents']);
+        //$ar = new Articles();
+        //$ar->pushAuditByArid($ar_id, $data['contents']);
         $result = ['ErrCode' => '0', 'Message' => '审核成功', 'Content' => ''];
         return (json_encode($result));
     }

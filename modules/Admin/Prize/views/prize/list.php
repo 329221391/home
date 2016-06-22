@@ -6,6 +6,8 @@ use yii\helpers\Html;
 <?= Html::cssFile('@web/css/mobile/prize.css') ?>
 <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 
+<div style="width:100%;height:40%; position: absolute; border: 3px solid gray; margin-top: 198px " ></div>
+
 <div class="header-list" style="z-index: 9999">
     <span class="ready-shipping">待发货</span>
 
@@ -19,8 +21,13 @@ use yii\helpers\Html;
     <?php foreach($ready_shipping as $order){ ?>
     <div class="prize_item">
         <div class="prize_panel">
-            <img src="<?=$order['image'] ?>" style="height:75px;width:75px;" />
-            <div class="info">
+            <div id='image_div' style=" width: 100px;height: 75px; background: red " >
+                <img id="img" src="<?=$order['image'] ?>" style="height:auto; width:auto;max-width:100%;max-height:100%" ></img>
+                    <span style="font-size:15px; color:green" >点击看大图</span>
+            </div>
+            
+
+            <div class="info" style="margin-left:25px" >
                 <div><b style="font-size:16px;">奖品名称：<?=$order['goods_name'] ?></b></div>
                 <div><b style="font-size:13px;">品牌：<?=$order['brand'] ?></b></div>
                 <div><b style="font-size:13px;">数量：<?=$order['count'] ?></b></div>
@@ -31,12 +38,17 @@ use yii\helpers\Html;
     <?php } ?>
 </div>
 
+
+
 <div class="container padding deliver" style=" display: none; ">
     <div style="height:80px;"></div>
     <?php foreach($delivered_list as $order){ ?>
     <div class="prize_item">
         <div class="prize_panel">
-            <img src="<?=$order['image'] ?>" style="height:75px;width:75px;" />
+            <div id='image_div' style=" width: 80px;height: 75px;" >
+                <img id="img" src="<?=$order['image'] ?>" style="height:auto; width:auto;max-width:100%;max-height:100%" ></img>
+                    <span style="font-size:15px; color:green" >点击看大图</span>
+            </div>
             <div class="info">
                 <div><b style="font-size:16px;">奖品名称：<?=$order['goods_name'] ?></b></div>
                 <div><b style="font-size:13px;">品牌：<?=$order['brand'] ?></b></div>
@@ -68,6 +80,12 @@ use yii\helpers\Html;
 <script type="text/javascript">
     //待发货列表和发货列表
     $(function(){
+
+        var window_height = $(window).height();
+        var img_height = $("#img").height();
+        alert(img_height);
+
+
         <?php if (empty($ready_shipping)) { ?>
             $(".title").html('待发货奖品为空');
             $(".footer").css('display','none');
@@ -93,8 +111,6 @@ use yii\helpers\Html;
             <?php } else { ?> 
                 $(".title").html('中奖列表');
                 <?php } ?>
-            //$(".shipping").fadeIn(1000);
-            //(".deliver").fadeOut(1000);
        });
        //已发货分屏点击事件
        $(".delivered").click(function(){
@@ -111,8 +127,6 @@ use yii\helpers\Html;
                 $(".title").html('中奖列表');
 
                 <?php } ?>
-            //$(".deliver").fadeIn(1000);
-            //$(".shipping").fadeOut(1000);
        });
     });
 
@@ -150,8 +164,3 @@ use yii\helpers\Html;
         }
     });
 </script>
-
-
-
-
-

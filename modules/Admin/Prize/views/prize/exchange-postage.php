@@ -15,7 +15,7 @@ use app\modules\AppBase\base\HintConst;
 <div style="height: 100px;" ></div>
     <label style="margin-top: 5px; width: 100%; text-align: center;">兑换规则：10积分兑换1元邮费</label>
     <hr>
-    <div id="sum" style="margin-top: 5px; width: 100%; text-align: center;">
+    <div id="sum" style="margin-top: 5px; width: 100%; text-align: center; color:#000; ">
         <?php  echo "$custom_name"; if ($cat_default_id == HintConst::$ROLE_HEADMASTER) {
             echo "园长";
         } elseif ($cat_default_id == HintConst::$ROLE_TEACHER) {
