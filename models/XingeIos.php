@@ -53,7 +53,7 @@ class XingeIos implements XingeProxy{
      */
     protected function getBaseMessage($title,$content,$expire = 86400){
         $mess = new MessageIOS();
-        var_dump($title);
+        //var_dump($title);
         $mess->setAlert($title); //$mess->setAlert($content['head'] . $content['body']);
         $mess->setSound('default');
         $mess->setCustom(['type' => $content]);//$mess->setCustom(['type' => $content['type']]);

@@ -246,7 +246,7 @@ class HbPush {
             }
         }
         if(!empty($datas)){
-            $this->push($datas,'-226-'.$id.'-0-0-0');
+            $this->push($datas,'-226-'.$id.'-'.$receiver['school_id'].'-'.$receiver['class_id'].'-'.$receiver['id']);
         }
     }
 
@@ -346,12 +346,12 @@ class HbPush {
         $query = new Query();
         $sender = $query->select($this->select_custom)->from('customs')->where(['id'=>$redfl['author_id']])->one();
 
-        $query = new Query();
-        $parent = $query->select($this->select_custom)->from('customs')->where(['id'=>$redfl['receiver_id']])->one();
+        //$query = new Query();
+        //$parent = $query->select($this->select_custom)->from('customs')->where(['id'=>$redfl['receiver_id']])->one();
         $datas = [];
-        $datas = $this->addPushData([$parent],$datas);
+        $datas = $this->addPushData([$receiver],$datas);
         if(!empty($datas)){
-            $this->push($datas,'-229-'.$id.'-0-0-0',$receiver,$sender);
+            $this->push($datas,'-249-'.$id.'-'.$receiver['school_id'].'-'.$receiver['class_id'].'-'.$receiver['id'],$receiver,$sender);
         }
     }
 
@@ -432,7 +432,6 @@ class HbPush {
 
             }
         }
-
         if(!empty($datas)){
             $this->push($datas,'-222-'.$id.'-0-0-0');
         }
@@ -447,7 +446,7 @@ class HbPush {
         $query = new Query();
         $art_reply = $query->select('*')->from('article_replies')->where(['id'=>$id])->one();
         $query = new Query();
-        $reply_author = $query->select($this->select_custom)->from('article_replies')->where(['id'=>$art_reply['repliers_id']])->one();
+        $reply_author = $query->select($this->select_custom)->from('customs')->where(['id'=>$art_reply['repliers_id']])->one();
         if($art_reply['reply_id'] > 0){
             //推消息给被引用人
             $query = new Query();
@@ -464,11 +463,13 @@ class HbPush {
         $datas = [];
 
         //推送消息给文章的作者
+		
         $query = new Query();
         $art = $query->select('author_id')->from('articles')->where(['id'=>$art_reply['article_id']])->one();
         $query = new Query();
         $author = $query->select($this->select_custom)->from('customs')->where(['id'=>$art['author_id']])->one();
-        if($art_reply['repliers_id'] != $author['id']){//回复者并不是文章作者，可以推送给作者
+
+        if($art_reply['repliers_id'] != $author['id'] && $art_reply['reply_id'] != $author['id']){//回复者并不是文章作者，可以推送给作者
             $datas = $this->addPushData([$author],$datas);
             if(!empty($datas)){
                 $sender = $reply_author;
@@ -531,6 +532,39 @@ class HbPush {
     public function replyPicPush(){
 
     }
+	
+	public function replyNotePush($id){
+		$ba = new BaseAnalyze();
+		$query = new Query();
+		$note_reply = $query->select('*')->from('notes_replies')->where(['id'=>$id])->one();
+		
+		$datas = [];
+		if($note_reply['receiver_id'] == 0){
+			
+			$query = new Query();
+			$note = $query->select('id,author_id')->from('notes')->where(['id'=>$note_reply['note_id']])->one();
+			$query = new Query();
+			$author = $query->select($this->select_custom)->from('customs')->where(['id'=>$note['author_id']])->one();
+			//$ba->writeToAnal('receiver id is 0');
+			//return ;
+			//推给note作者
+			$datas = $this->addPushData([$author],$datas);
+			$receiver = $author;
+		}else{
+			$query = new Query();
+			$sender = $query->select($this->select_custom)->from('customs')->where(['id'=>$note_reply['sender_id']])->one();
+			$query = new Query();
+			$receiver = $query->select($this->select_custom)->from('customs')->where(['id'=>$note_reply['receiver_id']])->one();
+			
+			
+			//给被回复者推送
+			$datas = $this->addPushData([$receiver],$datas);
+		}
+		
+		
+		
+		$this->push($datas,'-65-252-'.$note_reply['note_id'].'-'.$receiver['school_id'].'-'.$receiver['class_id'].'-'.$receiver['id']);
+	}
 
     //发布俱乐部 话题:101 求助102 教师学习103 家长学习104 招生安全105 政策趋势106
     //$ret = $xgProxy->pushByTokenSimple($token,'title','207-106-10-20734-650-0-5706');
@@ -557,7 +591,7 @@ class HbPush {
         $receiver = $query->select($this->select_custom)->from('customs')->where(['id'=>$vote_reply['receiver_id']])->one();
         $datas = [];
         //给被回复者推送
-        $this->addPushData([$receiver],$datas);
+        $datas = $this->addPushData([$receiver],$datas);
         $this->push($datas,'-65-'.$type_id.'-'.$id.'-'.$sender['school_id'].'-'.$sender['class_id'].'-'.$sender['id']);
     }
 
@@ -607,6 +641,9 @@ class HbPush {
         $ba = new BaseAnalyze();
         foreach ($account_datas as $platform=>$datas_role) {
             foreach ($datas_role as $role=>$accounts) {
+                if(empty($role)){
+                    continue;
+                }
                 $xgInstance = XingeProxyFactory::getXingeProxy($platform,$role);
                 //var_dump($platform.'_'.$role);
                 //var_dump($accounts);
@@ -626,7 +663,7 @@ class HbPush {
                 }
                 //var_dump($ret);
                 //echo '<br />';
-                $ba->writeToAnal($ret);
+                $ba->writeToAnal(var_export($ret,true));
             }
         }
     }
@@ -640,6 +677,7 @@ class HbPush {
 
             //var_dump($platform.'_'.$role);
             //echo '<br/>';
+
             $ba->writeToAnal($platform.'_'.$role);
             $tempContent = $content;
             $tempContent = $this->getRoleCode($role).$tempContent;
@@ -650,7 +688,7 @@ class HbPush {
             $ret = $xgInstance->pushByTagSimple($tag,'title',$tempContent);
             //var_dump($ret);
             //echo '<br />';
-            $ba->writeToAnal($ret);
+            $ba->writeToAnal(var_export($ret,true));
 
             $platform = 'ios';
             $role = 'master';
@@ -659,7 +697,7 @@ class HbPush {
             //echo '<br/>';
             $title = $this->getHead($content,$receiver,$sender);
             $ret = $xgInstance->pushByTagSimple($tag,$title,$tempContent);
-            $ba->writeToAnal($ret);
+            $ba->writeToAnal(var_export($ret,true));
             //var_dump($ret);
             //echo '<br />';
         }catch(\Exception $e){
@@ -708,7 +746,7 @@ class HbPush {
         switch ($cat[1]) {
             case CatDef::$mod['rf']:
             case CatDef::$mod['gf']:
-                $head = $receiver_name . '小朋友表现太棒了，得到了小红花';
+                $head = '您的孩子表现太棒了，得到了小红花';
                 break;
             case CatDef::$mod['club_topic']:
                 $head = '您收到一篇新话题';
@@ -732,13 +770,13 @@ class HbPush {
                 $head = '您收到一篇新的通知';
                 break;
             case CatDef::$mod['msg']:
-                $head = '您收到'.$sender_name.'的私信';
+                $head = '您收到新的私信';
                 break;
             case CatDef::$mod['vote']:
                 $head = '幼儿园有一项新调查期待您的参与';
                 break;
             case CatDef::$mod['reply']:
-                $head = '收到'.$sender_name.'的回复';
+                $head = '收到新的回复';
                 break;
             case CatDef::$mod['pic']:
                 $head = '收到的新照片';

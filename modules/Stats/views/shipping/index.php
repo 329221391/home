@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = "奖品发货管理";
 				</tr>
 				<?php foreach($list as $item){ ?>
 				<tr>
-					<td><input id="fahuo" class="check_ids" name="ids[]" type="checkbox" value="<?=$item['id'] ?>"></input></td>
+					<td><input id="fahuo" class="check_ids" name="ids[]" type="checkbox" value="<?=$item['order_id'] ?>"></input></td>
 					<td><?=$item['name_zh'] ?></td>
 					<td><?=$item['order_id'] ?></td>
 					<td><?=$item['goods_name'] ?></td>
@@ -73,10 +73,12 @@ $this->params['breadcrumbs'][] = "奖品发货管理";
 					<td><?=$item['mobile'] ?></td>
 					<td><?=$item['shipping_address'] ?></td>
 					<td><?php echo $item['post_type'] == 1 ? '货到付款' : '使用邮费券' ?></td>
-					<td><span class="tbr_prize_status_<?=$item['id'] ?>"><?php if ($item['status'] == 0) {
+					<td style="background: <?php echo $item['status'] == 1 ? "#00ff00" : "gray" ?>; ">
+					<span class="tbr_prize_status_<?=$item['order_id'] ?>"><?php if ($item['status'] == 0) {
 						echo '未发货';
-					} else echo '已发货';
-					?><span></td>
+						} else echo '已发货'; ?>
+					<span>
+					</td>
 					<td><a id=detail href="index.php?r=Stats/shipping/detail&id=<?=$item['id'] ?>" target="_blank" style="border-right: 1px solid gray">详情</a>
 						<a id="closeBtn" href="index.php?r=Stats/shipping/close&id=<?=$item['id'] ?>" >关闭</a>
 						</td>
@@ -109,6 +111,7 @@ $this->params['breadcrumbs'][] = "奖品发货管理";
 				var ids = Array();
 				$('.check_ids:checked').each(function(){
 					ids.push($(this).val());
+
 				});
 				if(ids.length == 0){
 					return;
@@ -117,6 +120,7 @@ $this->params['breadcrumbs'][] = "奖品发货管理";
 					if(serverData.ErrCode == 0){
 						for(var i=0;i<ids.length;i++){
 							$('.tbr_prize_status_'+ids[i]).text('已发货');
+							$('.tbr_prize_status_'+ids[i]).parents('td').css('background','#00ff00');
 						}
 					}else{
 						alert(serverData.Message);

@@ -6,8 +6,6 @@ use yii\helpers\Html;
 <?= Html::cssFile('@web/css/mobile/prize.css') ?>
 <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 
-<div style="width:100%;height:40%; position: absolute; border: 3px solid gray; margin-top: 198px " ></div>
-
 <div class="header-list" style="z-index: 9999">
     <span class="ready-shipping">待发货</span>
 
@@ -21,11 +19,19 @@ use yii\helpers\Html;
     <?php foreach($ready_shipping as $order){ ?>
     <div class="prize_item">
         <div class="prize_panel">
-            <div id='image_div' style=" width: 100px;height: 75px; background: red " >
-                <img id="img" src="<?=$order['image'] ?>" style="height:auto; width:auto;max-width:100%;max-height:100%" ></img>
-                    <span style="font-size:15px; color:green" >点击看大图</span>
+            <div id='image_div' onclick=display_image('<?= $order['image']?>') style=" width: 100px;height: 75px" >
+                <!--显示缩略图-->
+                <img id="image" style="display:<?php $fileName = $order['image']; echo strlen($fileName) < 25 ? 'none' : 'block' ?>" src=
+                    <?php 
+                        $fileName = $order['image'];
+                        if(strlen($fileName) > 25){
+                            $str=explode('.', $fileName);
+                            echo $str[0]."_thumb.".$str[1];
+                        } else echo 0;
+                    ?>
+                </img>
+                <span style="font-size:15px; color:green" >点击看大图</span>
             </div>
-            
 
             <div class="info" style="margin-left:25px" >
                 <div><b style="font-size:16px;">奖品名称：<?=$order['goods_name'] ?></b></div>
@@ -38,6 +44,8 @@ use yii\helpers\Html;
     <?php } ?>
 </div>
 
+    <image id="origin_image" style="position: absolute; z-index: 1;display: none " >
+    </image>
 
 
 <div class="container padding deliver" style=" display: none; ">
@@ -45,9 +53,18 @@ use yii\helpers\Html;
     <?php foreach($delivered_list as $order){ ?>
     <div class="prize_item">
         <div class="prize_panel">
-            <div id='image_div' style=" width: 80px;height: 75px;" >
-                <img id="img" src="<?=$order['image'] ?>" style="height:auto; width:auto;max-width:100%;max-height:100%" ></img>
-                    <span style="font-size:15px; color:green" >点击看大图</span>
+            <div id='image_div' onclick=display_image('<?= $order['image']?>') style=" width: 80px;height: 75px;" >
+                <!--显示缩略图-->
+                <img id="image" style="display:<?php $fileName = $order['image']; echo strlen($fileName) < 25 ? 'none' : 'block' ?>" src=
+                    <?php 
+                        $fileName = $order['image'];
+                        if(strlen($fileName) > 25){
+                            $str=explode('.', $fileName);
+                            echo $str[0]."_thumb.".$str[1];
+                        } else echo 0;
+                    ?>
+                </img>
+                <span style="font-size:15px; color:green" >点击看大图</span>
             </div>
             <div class="info">
                 <div><b style="font-size:16px;">奖品名称：<?=$order['goods_name'] ?></b></div>
@@ -61,7 +78,7 @@ use yii\helpers\Html;
 </div>
 
 
-<div class="footer" style="z-index: 9999">
+<div class="footer" style="z-index: 2">
     <div id="post" >
         <p class="postage">
             邮费:<label class="postLabel"><?= $sumPostage?></label>
@@ -80,12 +97,6 @@ use yii\helpers\Html;
 <script type="text/javascript">
     //待发货列表和发货列表
     $(function(){
-
-        var window_height = $(window).height();
-        var img_height = $("#img").height();
-        alert(img_height);
-
-
         <?php if (empty($ready_shipping)) { ?>
             $(".title").html('待发货奖品为空');
             $(".footer").css('display','none');
@@ -125,7 +136,6 @@ use yii\helpers\Html;
             $(".title").html('已发货奖品为空');
             <?php } else { ?> 
                 $(".title").html('中奖列表');
-
                 <?php } ?>
        });
     });
@@ -163,4 +173,40 @@ use yii\helpers\Html;
             });
         }
     });
+
+    //点击列表小图可以在屏幕中间显示大图
+    //获得浏览器宽度和高度
+    function display_image(addr){
+        var $window_height = $(window).height();
+        var $window_width = $(window).width();
+        //定义大图的宽度和高度
+        var $image_width;
+        var $image_height;
+        $("#origin_image").unbind();
+        $("#origin_image").prop("src", addr).load(function(){
+        $image_width = this.width;
+        $image_height = this.height;
+       if($image_width >= $window_width) {
+            var $scale = $window_width/$image_width;
+            $image_height = $image_height*$scale;
+            $image_width = $image_width*$scale;
+            var $top = ($window_height-$image_height)/2;
+            $(this).css('top',$top).css('width',$image_width).css('height',$image_height);
+            $(this).fadeIn(500);
+            $(this).bind('click',function(){
+                $(this).fadeOut(300);
+            });
+
+        } else if($image_width <= $window_width) {
+            var $top = ($window_height-$image_height)/2;
+            var $left = ($window_width-$image_width)/2;
+            $(this).css('top',$top).css('left',$left).css('width',$image_width).css('height',$image_height);
+            $(this).fadeIn(500);
+            $(this).bind('click',function(){
+                $(this).fadeOut(300);
+            });
+        }
+        
+        }); 
+    }
 </script>

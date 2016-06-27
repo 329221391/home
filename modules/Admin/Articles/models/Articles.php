@@ -912,7 +912,7 @@ class Articles extends BaseMain
                 $count = $where->count();
                 if($count > 0){
                     $ErrCode = HintConst::$DATETIME_NOT_READY;
-                    $Message = 'you just can send only one letter in a month';
+                    $Message = '一个月只能为一个人发送一次感谢信';
                     return json_encode(['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' =>'']);
                 }
             }else if($article_type_id == CatDef::$mod['praise']) {
@@ -944,7 +944,7 @@ class Articles extends BaseMain
 
                 if ($count > 0) {
                     $ErrCode = HintConst::$DATETIME_NOT_READY;
-                    $Message = 'you just can send only one praise in a day';
+                    $Message = '一天只能为一个人发送一次鼓励';
                     return json_encode(['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' => '']);
                 }
             }else if($article_type_id == CatDef::$mod['moneva']){
@@ -973,7 +973,7 @@ class Articles extends BaseMain
                 $count = $where->count();
                 if($count > 0){
                     $ErrCode = HintConst::$DATETIME_NOT_READY;
-                    $Message = 'you just can send only one moneva in a month';
+                    $Message = '一个月只能发表一次月评价';
                     return json_encode(['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' =>'']);
                 }
             }else if($article_type_id == CatDef::$mod['termeva']){
@@ -1011,7 +1011,7 @@ class Articles extends BaseMain
                     $count = $where->count();
                     if($count > 0){
                         $ErrCode = HintConst::$DATETIME_NOT_READY;
-                        $Message = 'you just can send only one termeva in 3-8 month';
+                        $Message = '学期评价只能3到8月 9到来年3月 期间各发一次';
                         return json_encode(['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' =>'']);
                     }
 
@@ -1034,7 +1034,7 @@ class Articles extends BaseMain
                     $count = $where->count();
                     if($count > 0){
                         $ErrCode = HintConst::$DATETIME_NOT_READY;
-                        $Message = 'you just can send only one termeva in 3-8 month';
+                        $Message = '学期评价只能3到8月 9到来年3月 期间各发一次';
                         return json_encode(['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' =>'']);
                     }
                 }elseif($now > $month_right){//大于8月
@@ -1057,13 +1057,14 @@ class Articles extends BaseMain
 
                     if($count > 0){
                         $ErrCode = HintConst::$DATETIME_NOT_READY;
-                        $Message = 'you just can send only one termeva in 3-8 month';
+                        $Message = '学期评价只能3到8月 9到来年3月 期间各发一次';
                         return json_encode(['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' =>'']);
                     }
                 }
 
             }
-
+			//$ba = new BaseAnalyze();
+			//$ba->writeToAnal('11111111111:'.$class);
             if (empty($d['title'])) {
                 $ErrCode = HintConst::$No_title;
             } elseif (empty($d['contents'])) {
@@ -1073,7 +1074,9 @@ class Articles extends BaseMain
                     (new Vote())->increaseShareTimes($d['o_link_id']);
                     (new Score())->ClubShare($d['o_link_id']);
                 }
+				//$ba->writeToAnal('222222222');
                 $Content = $this->addArticle($d, $role, $school, $class, $user, $type);
+				//$ba->writeToAnal('3333333');
                 //点赞发送通知 by tang
 
                 if($article_type_id == CatDef::$mod['praise']){
@@ -1111,7 +1114,7 @@ class Articles extends BaseMain
 
                     //新的推送
                     //家长端发评价不需要审核
-                    if($this->getCustomRole() == HintConst::$ROLE_PARENT &&
+                    /*if($this->getCustomRole() == HintConst::$ROLE_PARENT &&
                         ($d['article_type_id'] == CatDef::$mod['moneva']
                             || $d['article_type_id'] == CatDef::$mod['termeva'])){
                         $ispass = HintConst::$YesOrNo_YES;
@@ -1145,10 +1148,8 @@ class Articles extends BaseMain
                         }
 
                         $hbPush->auditPush($Content,$type_str);
-                    }
-
-
-
+                    }*/
+					$this->pushCreateArt($Content);
 
                 }else{//建超原有逻辑,又让服务器发送了一个http请求,自己请求自己,搞毛,还嫌不够慢?  - -!
                     //如果是家长发布月评价或年终总结
@@ -1169,7 +1170,7 @@ class Articles extends BaseMain
                     }*/
                     //新的推送
                     //家长端发评价不需要审核
-                    if($this->getCustomRole() == HintConst::$ROLE_PARENT &&
+                    /*if($this->getCustomRole() == HintConst::$ROLE_PARENT &&
                         ($d['article_type_id'] == CatDef::$mod['moneva']
                             || $d['article_type_id'] == CatDef::$mod['termeva'])){
                         $ispass = HintConst::$YesOrNo_YES;
@@ -1204,7 +1205,8 @@ class Articles extends BaseMain
                         }
 
                         $hbPush->auditPush($Content,$type_str);
-                    }
+                    }*/
+					$this->pushCreateArt($Content);
 
                 }
             }
@@ -1222,12 +1224,29 @@ class Articles extends BaseMain
     public function pushCreateArt($article_id){
         $hbPush = new HbPush();
         $query = new Query();
-        $article  = $query->select('id,article_type_id,school_id,class_id,author_id')->from('articles')->where(['id'=>$article_id])->one();
+        $article  = $query->select('id,article_type_id,school_id,class_id,author_id,ispassed')->from('articles')->where(['id'=>$article_id])->one();
         if(!$article ){
             return;
         }
-
-        if($article['ispassed'] == 212){ //待审核
+		
+		if($article['ispassed'] == 211){
+			if($article['article_type_id'] == CatDef::$mod['article']){ //文章
+				$hbPush->createArtPush($article_id);
+			}elseif($article['article_type_id'] == CatDef::$mod['pic']){ //照片
+				$hbPush->createPicPush($article_id);
+			}elseif($article['article_type_id'] == CatDef::$mod['moneva']){ //月评价
+				$hbPush->createYuePjPush($article_id);
+			}elseif($article['article_type_id'] == CatDef::$mod['termeva']){ //年评价
+				$hbPush->createNianPjPush($article_id);
+			}elseif($article['article_type_id'] == CatDef::$mod['letter']){ //感谢信
+				$hbPush->createLetterPush($article_id);
+			}elseif($article['article_type_id'] == CatDef::$mod['praise']){ //鼓励
+				$hbPush->createPraisePush($article_id);
+			}
+			return;
+		}
+		
+        if($article['ispassed'] == 212 && $article['article_type_id'] != CatDef::$mod['praise'] && $article['article_type_id'] != CatDef::$mod['letter']){ //待审核
             $type = '';
             if($article['article_type_id'] == CatDef::$mod['article']){
                 $type = '881-73';
@@ -1238,23 +1257,11 @@ class Articles extends BaseMain
             }elseif($article['article_type_id'] == CatDef::$mod['termeva']){
                 $type = '882-229';
             }
-            $hbPush->auditPush($article['id'],$type);
+            $hbPush->auditPush($article_id,$type);
             return;
         }
 
-        if($article['article_type_id'] == CatDef::$mod['article']){ //文章
-            $hbPush->createArtPush($article['id']);
-        }elseif($article['article_type_id'] == CatDef::$mod['pic']){ //照片
-            $hbPush->createPicPush($article['id']);
-        }elseif($article['article_type_id'] == CatDef::$mod['moneva']){ //月评价
-            $hbPush->createYuePjPush($article['id']);
-        }elseif($article['article_type_id'] == CatDef::$mod['termeva']){ //年评价
-            $hbPush->createNianPjPush($article['id']);
-        }elseif($article['article_type_id'] == CatDef::$mod['letter']){ //感谢信
-            $hbPush->createLetterPush($article['id']);
-        }elseif($article['article_type_id'] == CatDef::$mod['praise']){ //鼓励
-            $hbPush->createPraisePush($article[id]);
-        }
+        
     }
 
 
@@ -1263,7 +1270,7 @@ class Articles extends BaseMain
 
     public function  addArticle($d, $role, $school, $class, $user, $type)
     {
-
+		//$ba = new BaseAnalyze();
         $ar = new Articles();
         $d['sys_p'] = Score::getSysP('create', $d['article_type_id']);
         $d['school_id'] = $this->getCustomSchool_id();
@@ -1273,6 +1280,7 @@ class Articles extends BaseMain
         $d['date'] = CommonFun::getCurrentDate();
         $d['term'] = CommonFun::getCurrentTerm();
         $d['month'] = CommonFun::getCurrentYm();
+		//$ba->writeToAnal('44444444');
 		//$ba = new BaseAnalyze();
         $ispass = HintConst::$YesOrNo_NO;
         if ($d['article_type_id'] == CatDef::$mod['praise'] || $d['article_type_id'] == CatDef::$mod['letter']) {
@@ -1291,6 +1299,7 @@ class Articles extends BaseMain
         }
 		
 		//$ba->writeToAnal('$dd[ispassed]:'.$dd['ispassed']);
+		//$ba->writeToAnal('5555555');
         $d['isdelete'] = HintConst::$YesOrNo_NO;
         $d['isview'] = HintConst::$YesOrNo_NO;
         $file_name = $this->create_img($d['school_id'], $d['class_id'], "images");  //上传图片 并记录文件名
@@ -1298,6 +1307,7 @@ class Articles extends BaseMain
 		$d['ispassed'] = $ispass;
 
         $id = $ar->addNew($d);
+		//$ba->writeToAnal('66666666');
         $newid = 0;
         if ($file_name <> '' && $file_name) {
             //插入图片到attament
@@ -1315,7 +1325,7 @@ class Articles extends BaseMain
             $dd['sys_p'] = Score::IMG_CREATE_N;
             $newid = $at->add_At($dd);
         }
-
+		//$ba->writeToAnal('7777777');
         if ((($this->getCustomRole() == HintConst::$ROLE_TEACHER || $this->getCustomRole() == HintConst::$ROLE_PARENT) && $this->getIsCanSend() == HintConst::$YesOrNo_YES)
         || ($d['article_type_id'] == CatDef::$mod['praise'] || $d['article_type_id'] == CatDef::$mod['letter'])
         ) {
@@ -1332,6 +1342,7 @@ class Articles extends BaseMain
                 $score->ArtiCreate($data);
             }
         }
+		///$ba->writeToAnal('777777777:'.$class);
         $arsr = new ArticleSendRevieve();
         $dsr['article_id'] = $id;
         $dsr['type'] = $type;
@@ -1645,6 +1656,8 @@ class Articles extends BaseMain
                 //echo $receiver_id;exit;
                 $messages = new Messages();
                 $result = $messages->Sendmsg($message, $receiver_id);
+				$content = $result['Content'];
+				
                 //$this->push1($receiver_id, $message);
                 //$user = explode('-', $receiver_id);
                 //$custom = new Customs();
@@ -1652,6 +1665,7 @@ class Articles extends BaseMain
                 //(new MultThread())->push_msg($token, $message);
                 //新版推送
                 $hbPush = new HbPush();
+				$hbPush->sendMessage($content['id']);
                 if($type == HintConst::$ARTICLE_PATH){
                     $hbPush->createArtPush($value);
                 }elseif($type == HintConst::$YUEPINGJIA_PATH){

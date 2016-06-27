@@ -757,11 +757,19 @@ class Customs extends BaseMain
             $id = !empty($_REQUEST['id']) ? $_REQUEST['id'] : '';
             $d['token_type'] = !empty($_REQUEST['token_type']) ? $_REQUEST['token_type'] : 0;
             $d['token'] = !empty($_REQUEST['token']) ? $_REQUEST['token'] : '';
+			
+			
+			
             if ($id == 0 || empty($id) || !is_numeric($id)) {
                 $ErrCode = HintConst::$NoId;
             } elseif (empty($d['token'])) {
                 $ErrCode = HintConst::$No_token;
             } else {
+				//请空token相同的角色
+				$query = new Query();
+				$current_user = $query->select('id,cat_default_id')->from('customs')->where(['id'=>$id])->one();
+				$db = \Yii::$app->db;
+				$db->createCommand()->update('customs',['token'=>''],['cat_default_id'=>$current_user['cat_default_id'],'token'=>$d['token']])->execute();
                 return $this->Update_tokenA($id, $d);
             }
             return json_encode(array("ErrCode" => $ErrCode, "Message" => '', "Content" => HintConst::$NULLARRAY));

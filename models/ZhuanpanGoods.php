@@ -70,11 +70,11 @@ class ZhuanpanGoods extends \yii\db\ActiveRecord
 
         if ($file['error'] > 0) {
             echo "文件上传失败：".$file['error']."<br>"; exit;
-        //image_status为0，表示新建图片文件
+        //表示新建图片文件，新建图片和
         } elseif (empty($origin_image)) {
             $image = "images/zhuanpan/goods/".time().".$type";
             move_uploaded_file($_FILES["file"]["tmp_name"], $image);
-        //image_status为1，表示编辑上传图片文件
+        //表示编辑上传图片文件,再把原来的图片删除。
         } elseif (!empty($origin_image)) {
             
             $image = "images/zhuanpan/goods/".time().".$type";

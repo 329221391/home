@@ -4,6 +4,7 @@ namespace app\modules\Admin\Articles\models;
 use app\modules\AppBase\base\appbase\BaseAR;
 use app\modules\AppBase\base\CommonFun;
 use app\modules\AppBase\base\HintConst;
+use app\modules\AppBase\base\appbase\BaseAnalyze;
 use Yii;
 /**
  * This is the model class for table "article_send_revieve".
@@ -60,15 +61,23 @@ class ArticleSendRevieve extends BaseAR
     }
     public function  addArsr($dsr, $role, $school, $class, $user)
     {
+		//$ba = new BaseAnalyze();
+		//$ba->writeToAnal('11111111');
         if (isset(Yii::$app->session['custominfo'])) {
+			//$ba->writeToAnal('22222222');
             $dsr['sender_id'] = Yii::$app->session['custominfo']->custom->id;
+			//$ba->writeToAnal('3333333');
         } else {
+			//$ba->writeToAnal('4444444');
             $dsr['sender_id'] = 0;
+			//$ba->writeToAnal('5555555');
         }
         $dsr['role'] = $role;
         $dsr['createtime'] = CommonFun::getCurrentDateTime();
         $dsr['isread'] = HintConst::$YesOrNo_NO;
+		//$ba->writeToAnal('66666666');
         if (isset($school)) {
+			//$ba->writeToAnal('7777777');
             $school_arr = $this->haschar(',', $school);
             if ($school_arr) {
                 $dsr['class_id'] = 0;
@@ -89,25 +98,32 @@ class ArticleSendRevieve extends BaseAR
             }
         }
         if (isset($class)) {
+			//$ba->writeToAnal('8888888');
             $class_arr = $this->haschar(',', $class);
             $dsr['reciever_id'] = 0;
             if ($class_arr) {
+				//$ba->writeToAnal('aaaaaaa');
                 foreach ($class_arr as $v) {
                     $tmp = explode('-', $v);
                     $dsr['school_id'] = $tmp[0];
                     $dsr['class_id'] = $tmp[1];
                     $this->addNew($dsr);
+					//$ba->writeToAnal('bbbbbbb');
                 }
             } else {
+				//$ba->writeToAnal('ccccccc:'.$class);
                 $tmp = $this->haschar('-', $class);
                 if ($tmp) {
+					//$ba->writeToAnal('ddddddd');
                     $dsr['school_id'] = $tmp[0];
                     $dsr['class_id'] = $tmp[1];
                     $this->addNew($dsr);
+					//$ba->writeToAnal('eeeeeee');
                 }
             }
         }
         if (isset($user)) {
+			//$ba->writeToAnal('9999999');
             $user_arr = $this->haschar(',', $user);
             if ($user_arr) {
                 foreach ($user_arr as $v) {

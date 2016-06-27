@@ -196,10 +196,13 @@ class ArticleAttachment extends BaseAR
                         $messages = new Messages();
                         $result = $messages->Sendmsg($message, $article['author_id']);
                         //$this->push1($receiver_id, $message);
-                        $user = explode('-', $article['author_id']);
-                        $custom = new Customs();
-                        $token = $custom->getToken([], [], $user);
-                        (new MultThread())->push_msg($token, $message);
+                        //$user = explode('-', $article['author_id']);
+                        //$custom = new Customs();
+                        //$token = $custom->getToken([], [], $user);
+                        //(new MultThread())->push_msg($token, $message);
+						$content = $result['Content'];
+						$hbPush = new HbPush();
+						$hbPush->sendMessage($content['id']);
                     }
                 }
 
@@ -302,6 +305,7 @@ class ArticleAttachment extends BaseAR
                 //http_get($host.'/index.php?r=Message/messages/sendmsg&reciever_id='.$receiver_id.'&contents='.$message);
                 $messages = new Messages();
                 $result = $messages->Sendmsg($message,$receiver_id);
+				$content = $result['Content'];
                 //$this->push1($receiver_id, $message);
                 /*$user = explode('-', $receiver_id);
                 $custom = new Customs();
@@ -309,6 +313,7 @@ class ArticleAttachment extends BaseAR
                 (new MultThread())->push_msg($token, $message);*/
                 //新的推送
                 $hbPush = new HbPush();
+				$hbPush->sendMessage($content['id']);
                 $hbPush->createPicPush($ar_id);
 
 

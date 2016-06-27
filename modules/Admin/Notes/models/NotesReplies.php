@@ -13,6 +13,7 @@ use app\modules\AppBase\base\score\Score;
 use app\modules\AppBase\base\xgpush\XgPush;
 use Yii;
 use yii\db\Query;
+use app\models\HbPush;
 /**
  * This is the model class for table "notes_replies".
  * @property integer $id
@@ -69,6 +70,8 @@ class NotesReplies extends BaseReply
         $d['contents'] = isset($_REQUEST['contents']) ? $_REQUEST['contents'] : '';
         $d['sender_id'] = isset($_REQUEST['sender_id']) ? $_REQUEST['sender_id'] : $this->getCustomId();
         $d['receiver_id'] = isset($_REQUEST['receiver_id']) ? $_REQUEST['receiver_id'] : 0;
+		$ba = new BaseAnalyze();
+		$ba->writeToAnal($d['receiver_id']);
         $d['link_id'] = isset($_REQUEST['link_id']) ? $_REQUEST['link_id'] : 0;
         if (empty($d['note_id']) || !is_numeric($d['note_id'])) {
             $ErrCode = HintConst::$No_vote_id;
@@ -90,9 +93,10 @@ class NotesReplies extends BaseReply
                 $data['contents'] = $d['contents'];
                 $score->ReplyPoint($data);
             }
-            if ($d['receiver_id'] == 0) {
-                $this->pushReplyByNoteid($d['note_id'], $d['contents']);
-            } else {
+			
+            //if ($d['receiver_id'] == 0) {
+            //    $this->pushReplyByNoteid($d['note_id'], $d['contents']);
+            //} else {
                 //$this->pushReplyByRecieverid($d['note_id'], $d['receiver_id'], $d['contents']);
                 /*张亮说先暂时不要回复的推送了$query = new Query();
                 $receive_user  = $query->select('id,token,school_id,token_type,class_id,cat_default_id')->from('customs')->where(['id'=>$d['receiver_id']])->one();
@@ -101,7 +105,9 @@ class NotesReplies extends BaseReply
                     $ret = XgPush::PushSingleToken(['type'=>$content_str,'head'=>'','body'=>'通知新回复:'.$d['contents']],$receive_user);
                     //die(var_export($ret,true));
                 }*/
-            }
+            //}
+			$hbPush = new HbPush();
+			$hbPush->replyNotePush($Content);
         }
         $result = ['ErrCode' => $ErrCode, 'Message' => $Message, 'Content' => $Content];
         return $result;

@@ -12,6 +12,7 @@ use app\modules\AppBase\base\HintConst;
 use Yii;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
+use app\models\HbPush;
 /**
  * MessagesController implements the CRUD actions for Messages model.
  */
@@ -136,7 +137,10 @@ class MessagesController extends BaseController
         } else {
             $messages = new Messages();
             $result = $messages->Sendmsg($contents, $reciever_id);
-            $this->push($reciever_id, $contents);
+            //$this->push($reciever_id, $contents);
+			$content = $result['Content'];
+			$hbPush = new HbPush();
+			$hbPush->sendMessage($content['id']);
             parent::myjsonencode($result);
         }
         if ($ErrCode != HintConst::$Zero) {

@@ -15,6 +15,7 @@ use app\modules\AppBase\base\score\Score;
 use Yii;
 use yii\db\Query;
 use app\modules\AppBase\base\appbase\BaseAnalyze;
+
 /**
  * This is the model class for table "{{%notes}}".
  * @property integer $id
@@ -113,11 +114,17 @@ class Notes extends BaseMain
                 //http_get($host.'/index.php?r=Message/messages/sendmsg&reciever_id='.$receiver_id.'&contents='.$message);
                 $messages = new Messages();
                 $result = $messages->Sendmsg($message,$receiver_id);
+				$content = $result['Content'];
+				//$ba = new BaseAnalyze();
+				//$ba->writeToAnal('content id:'.$content['id']);
                 //$this->push1($receiver_id, $message);
-                $user = explode('-', $receiver_id);
-                $custom = new Customs();
-                $token = $custom->getToken([], [], $user);
-                (new MultThread())->push_msg($token, $message);
+                //$user = explode('-', $receiver_id);
+                //$custom = new Customs();
+                //$token = $custom->getToken([], [], $user);
+                //(new MultThread())->push_msg($token, $message);
+				//新的推送 
+				$hbPush = new HbPush();
+				$hbPush->sendMessage($content['id']);
             }
 
 
@@ -473,6 +480,7 @@ class Notes extends BaseMain
                 //http_get($host.'/index.php?r=Message/messages/sendmsg&reciever_id='.$receiver_id.'&contents='.$message);
                 $messages = new Messages();
                 $result = $messages->Sendmsg($message, $receiver_id);
+				$content = $result['Content'];
                 //$this->push1($receiver_id, $message);
                 //$user = explode('-', $receiver_id);
                 //$custom = new Customs();
@@ -480,6 +488,7 @@ class Notes extends BaseMain
                 //(new MultThread())->push_msg($token, $message);
                 //新版推送
                 $hbPush = new HbPush();
+				$hbPush->sendMessage($content['id']);
                 $hbPush->createNotePush($value);
             }
         }

@@ -42,9 +42,11 @@ class ShippingController extends Controller
         $query->andWhere('t1.goods_name like \'%'.$goods_name.'%\'');
         
         $query->groupBy(['t1.order_id','t1.goods_id'])
-              ->orderBy('t1.create_time desc');
+              ->orderBy('t1.order_id desc');
     
-        $list=$query->all(); 
+        $list=$query->all();
+        /*var_dump($list['order_id']);
+        exit;*/
         $countQuery = clone $query;
 
         $pages = new Pagination(['totalCount' => $countQuery->count()]); 
@@ -78,6 +80,7 @@ class ShippingController extends Controller
     public function actionChangeState(){
         $ids = Yii::$app->request->post('ids',[]);
         $conn = Yii::$app->db;
+        //return $ids;
         $ret = $conn->createCommand()->update('prize_order',['status'=>1],['in','id',$ids])->execute();
         if($ret > 0 ){
             $startTime = time();

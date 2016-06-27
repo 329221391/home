@@ -77,13 +77,13 @@ class XgController extends Controller{
     public function actionIndex1(){
         $push = new HbPush();
         //$push->createArtPush(20375);##
-        $push->createNotePush(/*5293*/5471); //##ios端测试没通过
+        //$push->createNotePush(6110); //##ios端测试没通过
         //$push->createVotePush(3537); //##家长有推送无红点
         //$push->createPraisePush(20057);##
         //$push->createLetterPush(20250);##
         //$push->createFlowerPush(28518);## //红花，app红点没有取消
         //$push->createYuePjPush(20288);##
-        //$push->createPicPush(20260);##
+        $push->createPicPush(23655);
         //$push->createNianPjPush(12330);##
         //$push->replyArtContentPush(9432,73);## //回复文章
         //$push->replyBabyPingjiaReply(20288,75);##//回复月评价;
@@ -97,7 +97,7 @@ class XgController extends Controller{
         //Notes/notes/pass del 审核通知通过,不通过
 
         //$push->auditPush(5293,'883-252'); //图片880-222,通知883-252,文章881-73,月评价882-75，年评价882-229
-        //$push->sendMessage(4492);
+        //$push->sendMessage(8618);
     }
 
     /**
